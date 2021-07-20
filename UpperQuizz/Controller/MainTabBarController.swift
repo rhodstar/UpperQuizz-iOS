@@ -19,10 +19,20 @@ final class MainTabBarController: UITabBarController {
     // MARK: - Helpers
     private func configureViewControllers() {
         view.backgroundColor = .white
-        let remindersViewController = RemindersController()
-        let testsViewController = TestsController()
-        let progressViewController = ProgressController()
+        UITabBar.appearance().tintColor = .black
+        let remindersViewController = createNavigationController(unselectedImage: UIImage(named: "bell")!, selectedImage: UIImage(named: "bell.fill")!, titleItem: "Recordatorios", rootViewController: RemindersController())
+        let testsViewController = createNavigationController(unselectedImage: UIImage(named: "wallet.pass")!, selectedImage: UIImage(named: "wallet.pass.fill")!, titleItem: "Examenes", rootViewController: TestsController())
+        let progressViewController = createNavigationController(unselectedImage: UIImage(named: "person")!, selectedImage: UIImage(named: "person.fill")!, titleItem: "Mi progreso", rootViewController: ProgressController())
         
         viewControllers = [remindersViewController, testsViewController, progressViewController]
+    }
+    
+    private func createNavigationController(unselectedImage: UIImage, selectedImage: UIImage, titleItem: String, rootViewController: UIViewController) -> UINavigationController {
+        let navigationController = UINavigationController(rootViewController: rootViewController)
+        navigationController.tabBarItem.title = titleItem
+        navigationController.tabBarItem.image = unselectedImage
+        navigationController.tabBarItem.selectedImage = selectedImage
+        
+        return navigationController
     }
 }
