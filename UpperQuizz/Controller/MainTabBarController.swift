@@ -25,7 +25,7 @@ final class MainTabBarController: UITabBarController {
         let progressViewController = createNavigationController(unselectedImage: UIImage(named: "person")!, selectedImage: UIImage(named: "person.fill")!, titleItem: "Mi progreso", rootViewController: ProgressController())
         
         viewControllers = [remindersViewController, testsViewController, progressViewController]
-        selectedIndex = 1
+        selectedIndex = 1 // Attribute of an UITabBarController, specifies the initial ViewController
     }
     
     private func createNavigationController(unselectedImage: UIImage, selectedImage: UIImage, titleItem: String, rootViewController: UIViewController) -> UINavigationController {
