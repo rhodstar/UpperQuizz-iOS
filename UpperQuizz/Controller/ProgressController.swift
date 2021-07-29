@@ -6,14 +6,13 @@
 //
 
 import UIKit
-
+//Programacion Reactiva: 
 // MARK: - MainTabController Class
 final class ProgressController: UIViewController {
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .systemOrange
+        view.backgroundColor = .systemBlue
     }
 }
