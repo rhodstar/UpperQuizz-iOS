@@ -9,8 +9,10 @@ import Foundation
 
 
 final class LocalDataManager {
-    public static func getData<T: Codable>(from jsonFile: String) -> T? {
+    public static func getData<T: Codable>(of type: T.Type,from jsonFile: String) -> T? {
+//        Leeer el archivo local
         guard let dataJson = self.readLocalJSONFile(forName: jsonFile) else { return nil }
+//        Retornar el archivo ya parseado
         guard let dataModel = self.parseModelJSON(of: T.self, from: dataJson) else { return nil }
         return dataModel
     }
