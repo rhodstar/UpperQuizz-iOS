@@ -1,0 +1,16 @@
+PODS:
+  - VHProgressBar (1.0.2)
+
+DEPENDENCIES:
+  - VHProgressBar (~> 1.0)
+
+SPEC REPOS:
+  trunk:
+    - VHProgressBar
+
+SPEC CHECKSUMS:
+  VHProgressBar: 95cc2cf48b75c7bbd44737d76f68924cf308f67c
+
+PODFILE CHECKSUM: 7b6e0fa50a1477368f03bf1791465f632a013558
+
+COCOAPODS: 1.10.1

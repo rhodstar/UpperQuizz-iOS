@@ -1,0 +1,6 @@
+framework module Pods_UpperQuizz {
+  umbrella header "Pods-UpperQuizz-umbrella.h"
+
+  export *
+  module * { export * }
+}

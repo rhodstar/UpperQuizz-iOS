@@ -3,17 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40CF121B25F06C2CB68B9D06 /* Pods_UpperQuizz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8391D09E0BAB4C4CB576D17 /* Pods_UpperQuizz.framework */; };
+		664C971526B64C5600A06F6B /* miProgreso.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664C971426B64C5600A06F6B /* miProgreso.swift */; };
+		664C971726B7B29800A06F6B /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664C971626B7B29800A06F6B /* CircularProgressView.swift */; };
+		664C971926B7BD4B00A06F6B /* HorizontalProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664C971826B7BD4B00A06F6B /* HorizontalProgressBar.swift */; };
+		664C971B26B8A8F100A06F6B /* CircularProgressView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664C971A26B8A8F000A06F6B /* CircularProgressView2.swift */; };
 		66BBA87C26B25F8100D26B99 /* mi_progreso.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BBA87926B25F8100D26B99 /* mi_progreso.json */; };
 		66BBA87D26B25F8100D26B99 /* pregunta_examen.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BBA87A26B25F8100D26B99 /* pregunta_examen.json */; };
 		66BBA87E26B25F8100D26B99 /* examen_terminado.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BBA87B26B25F8100D26B99 /* examen_terminado.json */; };
 		66BBA88126B25F9400D26B99 /* examen.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BBA87F26B25F9400D26B99 /* examen.json */; };
 		66BBA88226B25F9400D26B99 /* evaluaciones.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BBA88026B25F9400D26B99 /* evaluaciones.json */; };
-		66BBA88926B264CD00D26B99 /* ModelosDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BBA88826B264CD00D26B99 /* ModelosDummy.swift */; };
-		66BBA88B26B264E200D26B99 /* VistasGraficasDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BBA88A26B264E200D26B99 /* VistasGraficasDummy.swift */; };
 		66BBA88D26B264F300D26B99 /* LogicaModelosVista.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BBA88C26B264F300D26B99 /* LogicaModelosVista.swift */; };
 		887E8AD826A6923D00D62859 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E8AD726A6923D00D62859 /* AppDelegate.swift */; };
 		887E8ADA26A6923D00D62859 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E8AD926A6923D00D62859 /* SceneDelegate.swift */; };
@@ -26,14 +29,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21F86307C33164B23AA0B42B /* Pods-UpperQuizz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UpperQuizz.debug.xcconfig"; path = "Target Support Files/Pods-UpperQuizz/Pods-UpperQuizz.debug.xcconfig"; sourceTree = "<group>"; };
+		664C971426B64C5600A06F6B /* miProgreso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = miProgreso.swift; sourceTree = "<group>"; };
+		664C971626B7B29800A06F6B /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		664C971826B7BD4B00A06F6B /* HorizontalProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalProgressBar.swift; sourceTree = "<group>"; };
+		664C971A26B8A8F000A06F6B /* CircularProgressView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView2.swift; sourceTree = "<group>"; };
 		66BBA87926B25F8100D26B99 /* mi_progreso.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mi_progreso.json; sourceTree = "<group>"; };
 		66BBA87A26B25F8100D26B99 /* pregunta_examen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pregunta_examen.json; sourceTree = "<group>"; };
 		66BBA87B26B25F8100D26B99 /* examen_terminado.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = examen_terminado.json; sourceTree = "<group>"; };
 		66BBA87F26B25F9400D26B99 /* examen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = examen.json; sourceTree = "<group>"; };
 		66BBA88026B25F9400D26B99 /* evaluaciones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = evaluaciones.json; sourceTree = "<group>"; };
-		66BBA88826B264CD00D26B99 /* ModelosDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelosDummy.swift; sourceTree = "<group>"; };
-		66BBA88A26B264E200D26B99 /* VistasGraficasDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistasGraficasDummy.swift; sourceTree = "<group>"; };
 		66BBA88C26B264F300D26B99 /* LogicaModelosVista.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicaModelosVista.swift; sourceTree = "<group>"; };
+		73501D6AC86CB891D5F92CA4 /* Pods-UpperQuizz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UpperQuizz.release.xcconfig"; path = "Target Support Files/Pods-UpperQuizz/Pods-UpperQuizz.release.xcconfig"; sourceTree = "<group>"; };
 		887E8AD426A6923D00D62859 /* UpperQuizz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UpperQuizz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		887E8AD726A6923D00D62859 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		887E8AD926A6923D00D62859 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +51,7 @@
 		88BC912626A698BA003CACE6 /* TestsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsController.swift; sourceTree = "<group>"; };
 		88BC912826A698C5003CACE6 /* ProgressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressController.swift; sourceTree = "<group>"; };
 		88FC8DBF26AD1F4200451447 /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManager.swift; sourceTree = "<group>"; };
+		F8391D09E0BAB4C4CB576D17 /* Pods_UpperQuizz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UpperQuizz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40CF121B25F06C2CB68B9D06 /* Pods_UpperQuizz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +97,7 @@
 		66BBA88526B2649700D26B99 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				66BBA88826B264CD00D26B99 /* ModelosDummy.swift */,
+				664C971426B64C5600A06F6B /* miProgreso.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -96,7 +105,9 @@
 		66BBA88626B2649E00D26B99 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				66BBA88A26B264E200D26B99 /* VistasGraficasDummy.swift */,
+				664C971626B7B29800A06F6B /* CircularProgressView.swift */,
+				664C971826B7BD4B00A06F6B /* HorizontalProgressBar.swift */,
+				664C971A26B8A8F000A06F6B /* CircularProgressView2.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -109,11 +120,21 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		6A317264BAFEAE16C2184714 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F8391D09E0BAB4C4CB576D17 /* Pods_UpperQuizz.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		887E8ACB26A6923D00D62859 = {
 			isa = PBXGroup;
 			children = (
 				887E8AD626A6923D00D62859 /* UpperQuizz */,
 				887E8AD526A6923D00D62859 /* Products */,
+				F1619BCEA443AB09E51E9C33 /* Pods */,
+				6A317264BAFEAE16C2184714 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,6 +182,15 @@
 			path = DataManager;
 			sourceTree = "<group>";
 		};
+		F1619BCEA443AB09E51E9C33 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				21F86307C33164B23AA0B42B /* Pods-UpperQuizz.debug.xcconfig */,
+				73501D6AC86CB891D5F92CA4 /* Pods-UpperQuizz.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -168,9 +198,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 887E8AE826A6923E00D62859 /* Build configuration list for PBXNativeTarget "UpperQuizz" */;
 			buildPhases = (
+				FAD14B044BE6BB8B34254B9A /* [CP] Check Pods Manifest.lock */,
 				887E8AD026A6923D00D62859 /* Sources */,
 				887E8AD126A6923D00D62859 /* Frameworks */,
 				887E8AD226A6923D00D62859 /* Resources */,
+				CB42A3636E846C1B8590DEB6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -229,6 +261,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CB42A3636E846C1B8590DEB6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UpperQuizz/Pods-UpperQuizz-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UpperQuizz/Pods-UpperQuizz-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UpperQuizz/Pods-UpperQuizz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FAD14B044BE6BB8B34254B9A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UpperQuizz-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		887E8AD026A6923D00D62859 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -236,14 +310,16 @@
 			files = (
 				88BC912526A698AD003CACE6 /* RemindersController.swift in Sources */,
 				88BC912726A698BA003CACE6 /* TestsController.swift in Sources */,
+				664C971526B64C5600A06F6B /* miProgreso.swift in Sources */,
 				887E8AD826A6923D00D62859 /* AppDelegate.swift in Sources */,
 				88BC912926A698C5003CACE6 /* ProgressController.swift in Sources */,
 				66BBA88D26B264F300D26B99 /* LogicaModelosVista.swift in Sources */,
-				66BBA88926B264CD00D26B99 /* ModelosDummy.swift in Sources */,
-				66BBA88B26B264E200D26B99 /* VistasGraficasDummy.swift in Sources */,
 				88BC912326A6966A003CACE6 /* MainTabBarController.swift in Sources */,
 				887E8ADA26A6923D00D62859 /* SceneDelegate.swift in Sources */,
 				88FC8DC026AD1F4200451447 /* LocalDataManager.swift in Sources */,
+				664C971B26B8A8F100A06F6B /* CircularProgressView2.swift in Sources */,
+				664C971926B7BD4B00A06F6B /* HorizontalProgressBar.swift in Sources */,
+				664C971726B7B29800A06F6B /* CircularProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +444,7 @@
 		};
 		887E8AE926A6923E00D62859 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21F86307C33164B23AA0B42B /* Pods-UpperQuizz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -387,6 +464,7 @@
 		};
 		887E8AEA26A6923E00D62859 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73501D6AC86CB891D5F92CA4 /* Pods-UpperQuizz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

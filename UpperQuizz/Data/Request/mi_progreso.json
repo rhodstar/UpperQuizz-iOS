@@ -1,15 +1,15 @@
 {
-    "promedio_general": 10.4,
-    "historial_evaluaciones": [{
-            "nombre_examen": "Evaluacion 1",
-            "puntaje_total": 20,
-            "evaluacion_id": 1
+    "promedioGeneral": 9.3,
+    "historialEvaluaciones": [{
+            "nombreExamen": "Evaluacion 1",
+            "puntajeTotal": 9,
+            "evaluacionID": 1
 
         },
         {
-            "nombre_examen": "Evaluacion 1",
-            "puntaje_total": 20,
-            "evaluacion_id": 2
+            "nombreExamen": "Evaluacion 1",
+            "puntajeTotal": 8,
+            "evaluacionID": 2
         }
     ]
 }
