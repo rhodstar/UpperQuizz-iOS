@@ -8,6 +8,7 @@ import UIKit
 import Foundation
 @IBDesignable
 class HorizontalProgressBar:  UIView {
+    var porcentaje = LabelTittle()
     var color: UIColor = .blue
 
     var progress: CGFloat = 0 {
@@ -39,5 +40,6 @@ class HorizontalProgressBar:  UIView {
 
         progressLayer.frame = progressRect
         progressLayer.backgroundColor = color.cgColor
+        
     }
 }

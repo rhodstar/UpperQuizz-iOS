@@ -12,6 +12,7 @@
 		664C971726B7B29800A06F6B /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664C971626B7B29800A06F6B /* CircularProgressView.swift */; };
 		664C971926B7BD4B00A06F6B /* HorizontalProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664C971826B7BD4B00A06F6B /* HorizontalProgressBar.swift */; };
 		664C971B26B8A8F100A06F6B /* CircularProgressView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664C971A26B8A8F000A06F6B /* CircularProgressView2.swift */; };
+		664C971D26B8B4DF00A06F6B /* LabelTittle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664C971C26B8B4DF00A06F6B /* LabelTittle.swift */; };
 		66BBA87C26B25F8100D26B99 /* mi_progreso.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BBA87926B25F8100D26B99 /* mi_progreso.json */; };
 		66BBA87D26B25F8100D26B99 /* pregunta_examen.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BBA87A26B25F8100D26B99 /* pregunta_examen.json */; };
 		66BBA87E26B25F8100D26B99 /* examen_terminado.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BBA87B26B25F8100D26B99 /* examen_terminado.json */; };
@@ -34,6 +35,7 @@
 		664C971626B7B29800A06F6B /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		664C971826B7BD4B00A06F6B /* HorizontalProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalProgressBar.swift; sourceTree = "<group>"; };
 		664C971A26B8A8F000A06F6B /* CircularProgressView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView2.swift; sourceTree = "<group>"; };
+		664C971C26B8B4DF00A06F6B /* LabelTittle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTittle.swift; sourceTree = "<group>"; };
 		66BBA87926B25F8100D26B99 /* mi_progreso.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mi_progreso.json; sourceTree = "<group>"; };
 		66BBA87A26B25F8100D26B99 /* pregunta_examen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pregunta_examen.json; sourceTree = "<group>"; };
 		66BBA87B26B25F8100D26B99 /* examen_terminado.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = examen_terminado.json; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				664C971626B7B29800A06F6B /* CircularProgressView.swift */,
 				664C971826B7BD4B00A06F6B /* HorizontalProgressBar.swift */,
 				664C971A26B8A8F000A06F6B /* CircularProgressView2.swift */,
+				664C971C26B8B4DF00A06F6B /* LabelTittle.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				88BC912926A698C5003CACE6 /* ProgressController.swift in Sources */,
 				66BBA88D26B264F300D26B99 /* LogicaModelosVista.swift in Sources */,
 				88BC912326A6966A003CACE6 /* MainTabBarController.swift in Sources */,
+				664C971D26B8B4DF00A06F6B /* LabelTittle.swift in Sources */,
 				887E8ADA26A6923D00D62859 /* SceneDelegate.swift in Sources */,
 				88FC8DC026AD1F4200451447 /* LocalDataManager.swift in Sources */,
 				664C971B26B8A8F100A06F6B /* CircularProgressView2.swift in Sources */,
