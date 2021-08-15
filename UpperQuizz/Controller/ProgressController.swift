@@ -57,7 +57,7 @@ extension ProgressController: UITableViewDataSource{
         return cell
     }
 }
-
+// MARK: - Extension for Delegate Table
 extension ProgressController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVcc = DetailVC()
