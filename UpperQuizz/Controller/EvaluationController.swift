@@ -8,7 +8,7 @@
 import UIKit
 
 // MARK: - MainTabController Class
-final class TestsController: UIViewController {
+final class EvaluationController: UIViewController {
     
     // MARK: - Lifecycle
     override func viewDidLoad() {

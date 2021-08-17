@@ -12,16 +12,16 @@
 		66BBA87E26B25F8100D26B99 /* examen_terminado.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BBA87B26B25F8100D26B99 /* examen_terminado.json */; };
 		66BBA88126B25F9400D26B99 /* examen.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BBA87F26B25F9400D26B99 /* examen.json */; };
 		66BBA88226B25F9400D26B99 /* evaluaciones.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BBA88026B25F9400D26B99 /* evaluaciones.json */; };
-		66BBA88926B264CD00D26B99 /* ModelosDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BBA88826B264CD00D26B99 /* ModelosDummy.swift */; };
-		66BBA88B26B264E200D26B99 /* VistasGraficasDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BBA88A26B264E200D26B99 /* VistasGraficasDummy.swift */; };
 		66BBA88D26B264F300D26B99 /* LogicaModelosVista.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BBA88C26B264F300D26B99 /* LogicaModelosVista.swift */; };
 		887E8AD826A6923D00D62859 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E8AD726A6923D00D62859 /* AppDelegate.swift */; };
 		887E8ADA26A6923D00D62859 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E8AD926A6923D00D62859 /* SceneDelegate.swift */; };
 		887E8AE126A6923E00D62859 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 887E8AE026A6923E00D62859 /* Assets.xcassets */; };
 		88BC912326A6966A003CACE6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC912226A6966A003CACE6 /* MainTabBarController.swift */; };
 		88BC912526A698AD003CACE6 /* RemindersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC912426A698AD003CACE6 /* RemindersController.swift */; };
-		88BC912726A698BA003CACE6 /* TestsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC912626A698BA003CACE6 /* TestsController.swift */; };
+		88BC912726A698BA003CACE6 /* EvaluationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC912626A698BA003CACE6 /* EvaluationController.swift */; };
 		88BC912926A698C5003CACE6 /* ProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC912826A698C5003CACE6 /* ProgressController.swift */; };
+		88CC5BC226B4C58A00E97021 /* Evaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CC5BC126B4C58A00E97021 /* Evaluation.swift */; };
+		88CC5BC426B4C81E00E97021 /* EvaluationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CC5BC326B4C81E00E97021 /* EvaluationCell.swift */; };
 		88FC8DC026AD1F4200451447 /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FC8DBF26AD1F4200451447 /* LocalDataManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,8 +31,6 @@
 		66BBA87B26B25F8100D26B99 /* examen_terminado.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = examen_terminado.json; sourceTree = "<group>"; };
 		66BBA87F26B25F9400D26B99 /* examen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = examen.json; sourceTree = "<group>"; };
 		66BBA88026B25F9400D26B99 /* evaluaciones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = evaluaciones.json; sourceTree = "<group>"; };
-		66BBA88826B264CD00D26B99 /* ModelosDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelosDummy.swift; sourceTree = "<group>"; };
-		66BBA88A26B264E200D26B99 /* VistasGraficasDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistasGraficasDummy.swift; sourceTree = "<group>"; };
 		66BBA88C26B264F300D26B99 /* LogicaModelosVista.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicaModelosVista.swift; sourceTree = "<group>"; };
 		887E8AD426A6923D00D62859 /* UpperQuizz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UpperQuizz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		887E8AD726A6923D00D62859 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,8 +39,10 @@
 		887E8AE526A6923E00D62859 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88BC912226A6966A003CACE6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		88BC912426A698AD003CACE6 /* RemindersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersController.swift; sourceTree = "<group>"; };
-		88BC912626A698BA003CACE6 /* TestsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsController.swift; sourceTree = "<group>"; };
+		88BC912626A698BA003CACE6 /* EvaluationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationController.swift; sourceTree = "<group>"; };
 		88BC912826A698C5003CACE6 /* ProgressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressController.swift; sourceTree = "<group>"; };
+		88CC5BC126B4C58A00E97021 /* Evaluation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evaluation.swift; sourceTree = "<group>"; };
+		88CC5BC326B4C81E00E97021 /* EvaluationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCell.swift; sourceTree = "<group>"; };
 		88FC8DBF26AD1F4200451447 /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,7 +88,7 @@
 		66BBA88526B2649700D26B99 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				66BBA88826B264CD00D26B99 /* ModelosDummy.swift */,
+				88CC5BC126B4C58A00E97021 /* Evaluation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -96,7 +96,7 @@
 		66BBA88626B2649E00D26B99 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				66BBA88A26B264E200D26B99 /* VistasGraficasDummy.swift */,
+				88CC5BC326B4C81E00E97021 /* EvaluationCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -128,9 +128,9 @@
 		887E8AD626A6923D00D62859 /* UpperQuizz */ = {
 			isa = PBXGroup;
 			children = (
-				66BBA88726B264A600D26B99 /* ViewModel */,
-				66BBA88626B2649E00D26B99 /* View */,
 				66BBA88526B2649700D26B99 /* Model */,
+				66BBA88626B2649E00D26B99 /* View */,
+				66BBA88726B264A600D26B99 /* ViewModel */,
 				66BBA87626B25EFE00D26B99 /* Data */,
 				88BC911E26A6956F003CACE6 /* Controller */,
 				88FC8DBE26AD1F2B00451447 /* DataManager */,
@@ -147,7 +147,7 @@
 			children = (
 				88BC912226A6966A003CACE6 /* MainTabBarController.swift */,
 				88BC912426A698AD003CACE6 /* RemindersController.swift */,
-				88BC912626A698BA003CACE6 /* TestsController.swift */,
+				88BC912626A698BA003CACE6 /* EvaluationController.swift */,
 				88BC912826A698C5003CACE6 /* ProgressController.swift */,
 			);
 			path = Controller;
@@ -235,15 +235,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				88BC912526A698AD003CACE6 /* RemindersController.swift in Sources */,
-				88BC912726A698BA003CACE6 /* TestsController.swift in Sources */,
+				88BC912726A698BA003CACE6 /* EvaluationController.swift in Sources */,
 				887E8AD826A6923D00D62859 /* AppDelegate.swift in Sources */,
 				88BC912926A698C5003CACE6 /* ProgressController.swift in Sources */,
 				66BBA88D26B264F300D26B99 /* LogicaModelosVista.swift in Sources */,
-				66BBA88926B264CD00D26B99 /* ModelosDummy.swift in Sources */,
-				66BBA88B26B264E200D26B99 /* VistasGraficasDummy.swift in Sources */,
 				88BC912326A6966A003CACE6 /* MainTabBarController.swift in Sources */,
 				887E8ADA26A6923D00D62859 /* SceneDelegate.swift in Sources */,
+				88CC5BC426B4C81E00E97021 /* EvaluationCell.swift in Sources */,
 				88FC8DC026AD1F4200451447 /* LocalDataManager.swift in Sources */,
+				88CC5BC226B4C58A00E97021 /* Evaluation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
