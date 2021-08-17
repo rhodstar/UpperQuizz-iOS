@@ -22,7 +22,7 @@ class LabelTittle: UILabel {
   func initializeLabel() {
     self.textAlignment = .left
     self.font = UIFont(name: "Helvetica-Bold", size: 23)
-    self.textColor = UIColor.blue
+//    self.textColor = UIColor.blue
     self.text = "Promedio General:"
   }
 

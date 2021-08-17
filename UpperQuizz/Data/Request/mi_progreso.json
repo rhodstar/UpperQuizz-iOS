@@ -10,6 +10,16 @@
             "nombreExamen": "Evaluacion 2",
             "puntajeTotal": 8,
             "evaluacionID": 2
+        },
+        {
+            "nombreExamen": "Evaluacion 3",
+            "puntajeTotal": 7,
+            "evaluacionID": 3
+        },
+        {
+            "nombreExamen": "Evaluacion 4",
+            "puntajeTotal": 4,
+            "evaluacionID": 4
         }
     ]
 }

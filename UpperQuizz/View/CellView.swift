@@ -8,10 +8,11 @@
 import UIKit
 
 class CellView: UITableViewCell {
-    var safeArea: UILayoutGuide!
-    let circularProgress = CircularProgressView2()
+    let iconView = UIImageView(image: UIImage(systemName: "archivebox.fill"))
     var nameLabel = UILabel()
-    let gameSeriesLabel = UILabel()
+    let descriptionLabel = UILabel()
+    let horizontalProgressBar = HorizontalProgressBar()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
@@ -20,35 +21,40 @@ class CellView: UITableViewCell {
         fatalError("Init(coder:: ) has not been implemented")
     }
     func setupView(){
-        safeArea = layoutMarginsGuide
-        setupImageView()
+        setupIconView()
         setupNameLabel()
-        setupGameSeriesLabel()
-        
+        setupDescriptionLabel()
+        setupHorizontalProgress()
     }
-    func setupImageView(){
-        addSubview(circularProgress)
-        circularProgress.translatesAutoresizingMaskIntoConstraints = false
-        circularProgress.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor).isActive = true
-        circularProgress.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        circularProgress.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        circularProgress.heightAnchor.constraint(equalToConstant: 40).isActive = true
-//        imageIV.backgroundColor = .red
+    func setupIconView(){
+        addSubview(iconView)
+        iconView.translatesAutoresizingMaskIntoConstraints = false
+        iconView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+        iconView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        iconView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        iconView.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
     func setupNameLabel(){
         addSubview(nameLabel)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        nameLabel.leadingAnchor.constraint(equalTo: circularProgress.trailingAnchor, constant: 5).isActive = true
+        nameLabel.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 10).isActive = true
         nameLabel.topAnchor.constraint(equalTo: topAnchor,constant: 5).isActive = true
         nameLabel.font = UIFont(name: "Verdana-Bold", size: 16)
     }
-    func setupGameSeriesLabel(){
-        addSubview(gameSeriesLabel)
-        
-        gameSeriesLabel.translatesAutoresizingMaskIntoConstraints = false
-        gameSeriesLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
-        gameSeriesLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
-        gameSeriesLabel.font = UIFont(name: "Verdana", size: 16)
+    func setupDescriptionLabel(){
+        addSubview(descriptionLabel)
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+        descriptionLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
+        descriptionLabel.font = UIFont(name: "Verdana", size: 14)
+    }
+    func setupHorizontalProgress(){
+        addSubview(horizontalProgressBar)
+        horizontalProgressBar.translatesAutoresizingMaskIntoConstraints = false
+        horizontalProgressBar.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10).isActive = true
+        horizontalProgressBar.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor, constant: 10).isActive = true
+        horizontalProgressBar.trailingAnchor.constraint(equalTo: descriptionLabel.leadingAnchor, constant: -10).isActive = true
+        horizontalProgressBar.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
+        horizontalProgressBar.heightAnchor.constraint(equalToConstant: 7).isActive = true
     }
 }

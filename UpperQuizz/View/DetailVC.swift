@@ -49,7 +49,7 @@ class DetailVC: UIViewController{
         if let miprogreso1 = miprogreso1{
             nameLabel.text = miprogreso1.nombreExamen
         }else{
-            nameLabel.text = "Nombre 1"
+            print("Not")
         }
     }
     func setupName(){

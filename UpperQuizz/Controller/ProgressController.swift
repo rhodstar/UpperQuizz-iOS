@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 // MARK: - MainTabController Class
 final class ProgressController: UIViewController {
     
@@ -17,8 +18,7 @@ final class ProgressController: UIViewController {
         configureLayout()
     }
 
-//    model View
-//    View
+// MARK: - Configure Layout
     func configureLayout(){
         let tableView = UITableView()
         tableView.register(CellView.self, forCellReuseIdentifier: "cell")
@@ -37,10 +37,9 @@ final class ProgressController: UIViewController {
             view.bottomAnchor)
         ])
     }
-    
 }
 
-//Extension
+// MARK: - Extensión ProgressController
 extension ProgressController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return progressData2?.historialEvaluaciones.count ?? 1
@@ -52,11 +51,12 @@ extension ProgressController: UITableViewDataSource{
             return cell
         }
         viewCell.nameLabel.text = progressData2?.historialEvaluaciones[indexPath.row].nombreExamen
-        viewCell.gameSeriesLabel.text = "Puntaje obtenido: " + String(progressData2!.historialEvaluaciones[indexPath.row].puntajeTotal)
-        viewCell.circularProgress.progress = CGFloat(Float(progressData2?.historialEvaluaciones[indexPath.row].puntajeTotal ?? 1))/10
+        viewCell.descriptionLabel.text = "Calif: " + String(progressData2!.historialEvaluaciones[indexPath.row].puntajeTotal)
+        viewCell.horizontalProgressBar.progress = CGFloat(progressData2!.historialEvaluaciones[indexPath.row].puntajeTotal)/10
         return cell
     }
 }
+
 // MARK: - Extension for Delegate Table
 extension ProgressController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -64,5 +64,34 @@ extension ProgressController: UITableViewDelegate{
         detailVcc.CircularProgress.progress = CGFloat(Float(progressData2?.historialEvaluaciones[indexPath.row].puntajeTotal ?? 1))/10
         detailVcc.nameLabel.text = progressData2?.historialEvaluaciones[indexPath.row].nombreExamen
         self.present(detailVcc, animated: true)
+    }
+}
+
+extension ProgressController{
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 150))
+        let label = LabelTittle()
+        label.text = "Mi Promedio: " + String(self.progressData2!.promedioGeneral)
+        header.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+        label.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 10),
+        label.topAnchor.constraint(equalTo: header.topAnchor, constant: 15)
+        ])
+        let progresBar = HorizontalProgressBar()
+        progresBar.progress = CGFloat(self.progressData2!.promedioGeneral)/10
+        header.addSubview(progresBar)
+        progresBar.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            progresBar.topAnchor.constraint(equalTo: label.topAnchor, constant: 30),
+            progresBar.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 10),
+            progresBar.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -10),
+            progresBar.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -10)
+        ])
+        return header
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 70
     }
 }
