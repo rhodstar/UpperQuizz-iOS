@@ -13,6 +13,9 @@
 		66BBA88126B25F9400D26B99 /* examen.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BBA87F26B25F9400D26B99 /* examen.json */; };
 		66BBA88226B25F9400D26B99 /* evaluaciones.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BBA88026B25F9400D26B99 /* evaluaciones.json */; };
 		66BBA88D26B264F300D26B99 /* LogicaModelosVista.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BBA88C26B264F300D26B99 /* LogicaModelosVista.swift */; };
+		88348DD626CB70DA0064CFC8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88348DD526CB70DA0064CFC8 /* Constants.swift */; };
+		88348DD926CB74490064CFC8 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88348DD826CB74490064CFC8 /* UIViewExtension.swift */; };
+		88348DDB26CB9F3B0064CFC8 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88348DDA26CB9F3B0064CFC8 /* UIColorExtension.swift */; };
 		887E8AD826A6923D00D62859 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E8AD726A6923D00D62859 /* AppDelegate.swift */; };
 		887E8ADA26A6923D00D62859 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E8AD926A6923D00D62859 /* SceneDelegate.swift */; };
 		887E8AE126A6923E00D62859 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 887E8AE026A6923E00D62859 /* Assets.xcassets */; };
@@ -32,6 +35,9 @@
 		66BBA87F26B25F9400D26B99 /* examen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = examen.json; sourceTree = "<group>"; };
 		66BBA88026B25F9400D26B99 /* evaluaciones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = evaluaciones.json; sourceTree = "<group>"; };
 		66BBA88C26B264F300D26B99 /* LogicaModelosVista.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicaModelosVista.swift; sourceTree = "<group>"; };
+		88348DD526CB70DA0064CFC8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		88348DD826CB74490064CFC8 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		88348DDA26CB9F3B0064CFC8 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		887E8AD426A6923D00D62859 /* UpperQuizz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UpperQuizz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		887E8AD726A6923D00D62859 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		887E8AD926A6923D00D62859 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +115,26 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		88348DD426CB70A00064CFC8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				887E8AD726A6923D00D62859 /* AppDelegate.swift */,
+				887E8AD926A6923D00D62859 /* SceneDelegate.swift */,
+				887E8AE026A6923E00D62859 /* Assets.xcassets */,
+				88348DD526CB70DA0064CFC8 /* Constants.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		88348DD726CB742E0064CFC8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				88348DD826CB74490064CFC8 /* UIViewExtension.swift */,
+				88348DDA26CB9F3B0064CFC8 /* UIColorExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		887E8ACB26A6923D00D62859 = {
 			isa = PBXGroup;
 			children = (
@@ -134,9 +160,8 @@
 				66BBA87626B25EFE00D26B99 /* Data */,
 				88BC911E26A6956F003CACE6 /* Controller */,
 				88FC8DBE26AD1F2B00451447 /* DataManager */,
-				887E8AD726A6923D00D62859 /* AppDelegate.swift */,
-				887E8AD926A6923D00D62859 /* SceneDelegate.swift */,
-				887E8AE026A6923E00D62859 /* Assets.xcassets */,
+				88348DD726CB742E0064CFC8 /* Extensions */,
+				88348DD426CB70A00064CFC8 /* Common */,
 				887E8AE526A6923E00D62859 /* Info.plist */,
 			);
 			path = UpperQuizz;
@@ -235,10 +260,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				88BC912526A698AD003CACE6 /* RemindersController.swift in Sources */,
+				88348DD626CB70DA0064CFC8 /* Constants.swift in Sources */,
 				88BC912726A698BA003CACE6 /* EvaluationController.swift in Sources */,
 				887E8AD826A6923D00D62859 /* AppDelegate.swift in Sources */,
 				88BC912926A698C5003CACE6 /* ProgressController.swift in Sources */,
 				66BBA88D26B264F300D26B99 /* LogicaModelosVista.swift in Sources */,
+				88348DDB26CB9F3B0064CFC8 /* UIColorExtension.swift in Sources */,
+				88348DD926CB74490064CFC8 /* UIViewExtension.swift in Sources */,
 				88BC912326A6966A003CACE6 /* MainTabBarController.swift in Sources */,
 				887E8ADA26A6923D00D62859 /* SceneDelegate.swift in Sources */,
 				88CC5BC426B4C81E00E97021 /* EvaluationCell.swift in Sources */,
