@@ -9,7 +9,6 @@ import UIKit
 
 // MARK: - MainTabController Class
 final class MainTabBarController: UITabBarController {
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,12 +18,12 @@ final class MainTabBarController: UITabBarController {
     // MARK: - Helpers
     private func configureViewControllers() {
         view.backgroundColor = .white
-        UITabBar.appearance().tintColor = .black
+        UITabBar.appearance().tintColor = Constants.primaryColor
         let remindersViewController = createNavigationController(unselectedImage: UIImage(named: "bell")!, selectedImage: UIImage(named: "bell.fill")!, titleItem: "Recordatorios", rootViewController: RemindersController())
-        let testsViewController = createNavigationController(unselectedImage: UIImage(named: "wallet.pass")!, selectedImage: UIImage(named: "wallet.pass.fill")!, titleItem: "Examenes", rootViewController: TestsController())
+        let evaluationViewController = createNavigationController(unselectedImage: UIImage(named: "wallet.pass")!, selectedImage: UIImage(named: "wallet.pass.fill")!, titleItem: Constants.evaluationTitle, rootViewController: EvaluationController())
         let progressViewController = createNavigationController(unselectedImage: UIImage(named: "person")!, selectedImage: UIImage(named: "person.fill")!, titleItem: "Mi progreso", rootViewController: ProgressController())
         
-        viewControllers = [remindersViewController, testsViewController, progressViewController]
+        viewControllers = [remindersViewController, evaluationViewController, progressViewController]
         selectedIndex = 1 // Attribute of an UITabBarController, specifies the initial ViewController
     }
     

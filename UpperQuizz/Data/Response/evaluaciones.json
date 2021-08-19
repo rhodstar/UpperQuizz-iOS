@@ -1,29 +1,29 @@
 {
     "evaluciones": [{
-            "examen_ID": 1,
+            "examen_id": 1,
             "nombre_examen": "Examen 1",
             "status": "I",
             "aciertos": 9,
-            "num_preguntas_Contestadas": 10,
-            "total_Preguntas": 20,
+            "num_preguntas_contestadas": 10,
+            "total_preguntas": 20,
             "intentos": 0
         },
         {
-            "examen_ID": 2,
+            "examen_id": 2,
             "nombre_examen": "Examen 2",
             "status": "T",
             "aciertos": 9,
-            "num_preguntas_Contestadas": 10,
-            "total_Preguntas": 20,
+            "num_preguntas_contestadas": 10,
+            "total_preguntas": 20,
             "intentos": 0
         },
         {
-            "examen_ID": 3,
+            "examen_id": 3,
             "nombre_examen": "Examen 2",
             "status": "N",
             "aciertos": 9,
             "num_preguntas_Contestadas": 10,
-            "total_Preguntas": 20,
+            "total_preguntas": 20,
             "intentos": 0
         }
     ]

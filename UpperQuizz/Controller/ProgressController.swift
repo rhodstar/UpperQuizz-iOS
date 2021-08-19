@@ -24,6 +24,8 @@ final class ProgressController: UIViewController {
         tableView.register(CellView.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = Constants.backgroundColor
         tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView = tableView
         view.addSubview(tableView)
@@ -55,6 +57,9 @@ extension ProgressController: UITableViewDataSource{
         viewCell.horizontalProgressBar.progress = CGFloat(progressData2!.historialEvaluaciones[indexPath.row].puntajeTotal)/10
         return cell
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 }
 
 // MARK: - Extension for Delegate Table
@@ -84,14 +89,14 @@ extension ProgressController{
         header.addSubview(progresBar)
         progresBar.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            progresBar.topAnchor.constraint(equalTo: label.topAnchor, constant: 30),
+            progresBar.topAnchor.constraint(equalTo: label.topAnchor, constant: 40),
             progresBar.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 10),
             progresBar.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -10),
-            progresBar.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -10)
+            progresBar.heightAnchor.constraint(equalToConstant: 10)
         ])
         return header
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 70
+        return 100
     }
 }
