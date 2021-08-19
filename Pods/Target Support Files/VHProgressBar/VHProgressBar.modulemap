@@ -1,6 +1,0 @@
-framework module VHProgressBar {
-  umbrella header "VHProgressBar-umbrella.h"
-
-  export *
-  module * { export * }
-}
