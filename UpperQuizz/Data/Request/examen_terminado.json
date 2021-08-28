@@ -1,16 +1,16 @@
 {
     "evaluacion_id": 1,
-    "aciertos_totales": 2,
+    "aciertos_totales": 7,
     "fecha_aplicacion": "Date",
     "puntaje_materia": [{
             "materia_id": 1,
             "nombre_materia": "Historia",
-            "puntaje:": 3
+            "puntaje": 3
         },
         {
             "materia_id": 2,
             "nombre_materia": "Español",
-            "puntaje:": 4
+            "puntaje": 4
         }
     ]
 }

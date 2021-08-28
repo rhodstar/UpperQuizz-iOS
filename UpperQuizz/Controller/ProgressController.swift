@@ -12,7 +12,8 @@ final class ProgressController: UIViewController {
     
     private weak var tableView: UITableView?
     let progressData2 = LocalDataManager.getData(of: miProgreso.self, from: "mi_progreso")
-    // MARK: - Lifecycle
+    let examenTermiando2 = LocalDataManager.getData(of: examenTerminado.self, from: "examen_terminado")
+// MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLayout()
@@ -66,8 +67,12 @@ extension ProgressController: UITableViewDataSource{
 extension ProgressController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVcc = DetailVC()
-        detailVcc.CircularProgress.progress = CGFloat(Float(progressData2?.historialEvaluaciones[indexPath.row].puntajeTotal ?? 1))/10
-        detailVcc.nameLabel.text = progressData2?.historialEvaluaciones[indexPath.row].nombreExamen
+        detailVcc.examenTerminado = examenTermiando2
+        for i in examenTermiando2!.puntaje_materia{
+            print(i)
+            print(i.nombre_materia)
+        }
+        
         self.present(detailVcc, animated: true)
     }
 }

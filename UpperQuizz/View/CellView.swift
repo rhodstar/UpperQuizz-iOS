@@ -14,7 +14,7 @@ class CellView: UITableViewCell {
 //        container.backgroundColor = .blue
         return container
     }()
-    let iconView = UIImageView(image: UIImage(systemName: "archivebox.fill"))
+    var iconView = UIImageView(image: UIImage(systemName: "archivebox.fill"))
     var nameLabel = UILabel()
     let descriptionLabel = UILabel()
     let horizontalProgressBar = HorizontalProgressBar()

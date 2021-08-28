@@ -14,6 +14,7 @@
 		664C971D26B8B4DF00A06F6B /* LabelTittle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664C971C26B8B4DF00A06F6B /* LabelTittle.swift */; };
 		6675D29526C6EBA400DBAF63 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6675D29426C6EBA400DBAF63 /* CellView.swift */; };
 		6675D29B26C838E800DBAF63 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6675D29A26C838E800DBAF63 /* DetailVC.swift */; };
+		66A03F3D26D082B900782FE0 /* examenTerminado.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A03F3C26D082B900782FE0 /* examenTerminado.swift */; };
 		66BBA87C26B25F8100D26B99 /* mi_progreso.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BBA87926B25F8100D26B99 /* mi_progreso.json */; };
 		66BBA87D26B25F8100D26B99 /* pregunta_examen.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BBA87A26B25F8100D26B99 /* pregunta_examen.json */; };
 		66BBA87E26B25F8100D26B99 /* examen_terminado.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BBA87B26B25F8100D26B99 /* examen_terminado.json */; };
@@ -43,6 +44,7 @@
 		664C971C26B8B4DF00A06F6B /* LabelTittle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTittle.swift; sourceTree = "<group>"; };
 		6675D29426C6EBA400DBAF63 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		6675D29A26C838E800DBAF63 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		66A03F3C26D082B900782FE0 /* examenTerminado.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = examenTerminado.swift; sourceTree = "<group>"; };
 		66BBA87926B25F8100D26B99 /* mi_progreso.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mi_progreso.json; sourceTree = "<group>"; };
 		66BBA87A26B25F8100D26B99 /* pregunta_examen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pregunta_examen.json; sourceTree = "<group>"; };
 		66BBA87B26B25F8100D26B99 /* examen_terminado.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = examen_terminado.json; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			children = (
 				664C971426B64C5600A06F6B /* miProgreso.swift */,
 				88CC5BC126B4C58A00E97021 /* Evaluation.swift */,
+				66A03F3C26D082B900782FE0 /* examenTerminado.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -122,7 +125,6 @@
 				664C971A26B8A8F000A06F6B /* CircularProgressView2.swift */,
 				664C971C26B8B4DF00A06F6B /* LabelTittle.swift */,
 				6675D29426C6EBA400DBAF63 /* CellView.swift */,
-				6675D29A26C838E800DBAF63 /* DetailVC.swift */,
 				88CC5BC326B4C81E00E97021 /* EvaluationCell.swift */,
 			);
 			path = View;
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				88BC912226A6966A003CACE6 /* MainTabBarController.swift */,
+				6675D29A26C838E800DBAF63 /* DetailVC.swift */,
 				88BC912426A698AD003CACE6 /* RemindersController.swift */,
 				88BC912626A698BA003CACE6 /* EvaluationController.swift */,
 				88BC912826A698C5003CACE6 /* ProgressController.swift */,
@@ -281,12 +284,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				88BC912526A698AD003CACE6 /* RemindersController.swift in Sources */,
-				88BC912726A698BA003CACE6 /* TestsController.swift in Sources */,
+				88BC912726A698BA003CACE6 /* EvaluationController.swift in Sources */,
 				664C971526B64C5600A06F6B /* miProgreso.swift in Sources */,
 				88348DD626CB70DA0064CFC8 /* Constants.swift in Sources */,
 				88BC912726A698BA003CACE6 /* EvaluationController.swift in Sources */,
 				887E8AD826A6923D00D62859 /* AppDelegate.swift in Sources */,
 				88BC912926A698C5003CACE6 /* ProgressController.swift in Sources */,
+				66A03F3D26D082B900782FE0 /* examenTerminado.swift in Sources */,
 				6675D29B26C838E800DBAF63 /* DetailVC.swift in Sources */,
 				66BBA88D26B264F300D26B99 /* LogicaModelosVista.swift in Sources */,
 				6675D29526C6EBA400DBAF63 /* CellView.swift in Sources */,
