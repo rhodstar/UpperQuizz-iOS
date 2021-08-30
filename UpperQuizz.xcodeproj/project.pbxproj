@@ -224,7 +224,7 @@
 				887E8AD126A6923D00D62859 /* Frameworks */,
 				887E8AD226A6923D00D62859 /* Resources */,
 				88B6B0BB26DC652F0091E099 /* Embed Frameworks */,
-				88B6B0BC26DC65570091E099 /* ShellScript */,
+				88CC23EA26DC69AB0041E4CA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -284,7 +284,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		88B6B0BC26DC65570091E099 /* ShellScript */ = {
+		88CC23EA26DC69AB0041E4CA /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -292,7 +292,6 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/Alamofire.framework",
 			);
 			outputFileListPaths = (
 			);
