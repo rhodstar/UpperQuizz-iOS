@@ -18,7 +18,7 @@ final class EvaluationCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureCellLayout()
-        backgroundColor = Constants.backgroundColor
+        backgroundColor = .clear
         selectionStyle = .none
     }
     
