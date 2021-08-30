@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,8 @@
 		887E8AD826A6923D00D62859 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E8AD726A6923D00D62859 /* AppDelegate.swift */; };
 		887E8ADA26A6923D00D62859 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E8AD926A6923D00D62859 /* SceneDelegate.swift */; };
 		887E8AE126A6923E00D62859 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 887E8AE026A6923E00D62859 /* Assets.xcassets */; };
+		88B6B0B926DC652F0091E099 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B6B0B826DC652F0091E099 /* Alamofire.xcframework */; };
+		88B6B0BA26DC652F0091E099 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 88B6B0B826DC652F0091E099 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		88BC912326A6966A003CACE6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC912226A6966A003CACE6 /* MainTabBarController.swift */; };
 		88BC912526A698AD003CACE6 /* RemindersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC912426A698AD003CACE6 /* RemindersController.swift */; };
 		88BC912726A698BA003CACE6 /* EvaluationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC912626A698BA003CACE6 /* EvaluationController.swift */; };
@@ -27,6 +29,20 @@
 		88CC5BC426B4C81E00E97021 /* EvaluationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CC5BC326B4C81E00E97021 /* EvaluationCell.swift */; };
 		88FC8DC026AD1F4200451447 /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FC8DBF26AD1F4200451447 /* LocalDataManager.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		88B6B0BB26DC652F0091E099 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				88B6B0BA26DC652F0091E099 /* Alamofire.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		66BBA87926B25F8100D26B99 /* mi_progreso.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mi_progreso.json; sourceTree = "<group>"; };
@@ -43,6 +59,7 @@
 		887E8AD926A6923D00D62859 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		887E8AE026A6923E00D62859 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		887E8AE526A6923E00D62859 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88B6B0B826DC652F0091E099 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
 		88BC912226A6966A003CACE6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		88BC912426A698AD003CACE6 /* RemindersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersController.swift; sourceTree = "<group>"; };
 		88BC912626A698BA003CACE6 /* EvaluationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationController.swift; sourceTree = "<group>"; };
@@ -57,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88B6B0B926DC652F0091E099 /* Alamofire.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +158,7 @@
 			children = (
 				887E8AD626A6923D00D62859 /* UpperQuizz */,
 				887E8AD526A6923D00D62859 /* Products */,
+				88B6B0B726DC652F0091E099 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,6 +184,14 @@
 				887E8AE526A6923E00D62859 /* Info.plist */,
 			);
 			path = UpperQuizz;
+			sourceTree = "<group>";
+		};
+		88B6B0B726DC652F0091E099 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				88B6B0B826DC652F0091E099 /* Alamofire.xcframework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		88BC911E26A6956F003CACE6 /* Controller */ = {
@@ -196,6 +223,8 @@
 				887E8AD026A6923D00D62859 /* Sources */,
 				887E8AD126A6923D00D62859 /* Frameworks */,
 				887E8AD226A6923D00D62859 /* Resources */,
+				88B6B0BB26DC652F0091E099 /* Embed Frameworks */,
+				88B6B0BC26DC65570091E099 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -253,6 +282,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		88B6B0BC26DC65570091E099 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/Alamofire.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		887E8AD026A6923D00D62859 /* Sources */ = {
