@@ -9,7 +9,7 @@ import UIKit
 
 class RoundedUIView: UIView {
     
-    var customRadius: CGFloat = 4.0
+    var customRadius: CGFloat = 10.0
     var customCorners: UIRectCorner = [.allCorners]
     
     override func layoutSubviews() {
