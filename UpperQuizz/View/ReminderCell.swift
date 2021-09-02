@@ -33,11 +33,9 @@ final class ReminderCell: UITableViewCell {
 
     private lazy var textLabelsContainer: UIView = {
         let tvContainer = UIView()
-        tvContainer.backgroundColor = UIColor(red: 250, green: 241, blue: 257)
         
         tvContainer.addSubview(itemTitleLabel)
-        itemTitleLabel.anchor(top: tvContainer.topAnchor, paddingTop: 8)
-        itemTitleLabel.centerX(inView: tvContainer)
+        itemTitleLabel.anchor(top: tvContainer.topAnchor, paddingTop: 8, leading: tvContainer.leadingAnchor, leadingPadding: 10)
         
         tvContainer.addSubview(announcementLabel)
         announcementLabel.anchor(top:itemTitleLabel.topAnchor, paddingTop: 30, leading: tvContainer.leadingAnchor, leadingPadding: 10, width: 100)
@@ -71,7 +69,6 @@ final class ReminderCell: UITableViewCell {
         label.font = UIFont.boldSystemFont(ofSize: 18)
         return label
     }()
-    
     
     private let announcementLabel: UILabel = {
         let label = UILabel()
