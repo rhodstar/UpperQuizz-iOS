@@ -18,6 +18,7 @@ final class ReminderCell: UITableViewCell {
     // MARK: - Containers
     private lazy var containerView: UIView = {
         let containerView = RoundedUIView()
+        containerView.cardStyle()
         containerView.backgroundColor = .systemBackground
         containerView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -30,9 +31,9 @@ final class ReminderCell: UITableViewCell {
         return containerView
     }()
     
-
     private lazy var textLabelsContainer: UIView = {
         let tvContainer = UIView()
+        tvContainer.backgroundColor = .white
         
         tvContainer.addSubview(itemTitleLabel)
         itemTitleLabel.anchor(top: tvContainer.topAnchor, paddingTop: 8, leading: tvContainer.leadingAnchor, leadingPadding: 10)
@@ -44,13 +45,13 @@ final class ReminderCell: UITableViewCell {
         examLabel.anchor(top:announcementLabel.topAnchor, paddingTop: 50, leading: tvContainer.leadingAnchor, leadingPadding: 10, width: 100)
         
         tvContainer.addSubview(announcementDateLabel)
-        announcementDateLabel.anchor(top:itemTitleLabel.topAnchor, paddingTop: 30, trailing: tvContainer.trailingAnchor, trailingPadding: -5, width: 130)
+        announcementDateLabel.anchor(top:itemTitleLabel.topAnchor, paddingTop: 30, trailing: tvContainer.trailingAnchor, trailingPadding: 5, width: 130)
         
         tvContainer.addSubview(examDateLabel)
-        examDateLabel.anchor(top:announcementDateLabel.topAnchor, paddingTop: 50, trailing: tvContainer.trailingAnchor, trailingPadding: -5, width: 130)
+        examDateLabel.anchor(top:announcementDateLabel.topAnchor, paddingTop: 50, trailing: tvContainer.trailingAnchor, trailingPadding: 5, width: 130)
         
         tvContainer.addSubview(seeMoreLabel)
-        seeMoreLabel.anchor(bottom: tvContainer.bottomAnchor, paddingBottom: -10, trailing: tvContainer.trailingAnchor, trailingPadding: -15)
+        seeMoreLabel.anchor(bottom: tvContainer.bottomAnchor, paddingBottom: -10, trailing: tvContainer.trailingAnchor, trailingPadding: 15)
         
         return tvContainer
     }()
@@ -130,7 +131,7 @@ final class ReminderCell: UITableViewCell {
         addSubview(containerView)
         containerView.anchor(top:topAnchor, paddingTop: 10,
                              leading: leadingAnchor, leadingPadding: 15,
-                             trailing: trailingAnchor, trailingPadding: -15,
+                             trailing: trailingAnchor, trailingPadding: 15,
                              height: ReminderCell.cellHeight)
         
     }
