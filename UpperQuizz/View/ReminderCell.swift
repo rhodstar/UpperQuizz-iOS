@@ -11,7 +11,6 @@ import UIKit
 final class ReminderCell: UITableViewCell {
     // MARK: - Identifier
     static let reuseId = "reminderCell"
-    static let cellHeight: CGFloat = 160
     
     private weak var reminderTitleLabel: UILabel?
     
@@ -62,7 +61,7 @@ final class ReminderCell: UITableViewCell {
     
     private let itemTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Primera vuelta UNAM"
+        label.text = Constants.reminderItemTitle
         label.font = UIFont.boldSystemFont(ofSize: 18)
         return label
     }()
@@ -70,7 +69,7 @@ final class ReminderCell: UITableViewCell {
     private let announcementLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "Fecha de la convocatoria"
+        label.text = Constants.reminderAnnounceText
         label.font = UIFont.systemFont(ofSize: 16)
         return label
     }()
@@ -87,7 +86,7 @@ final class ReminderCell: UITableViewCell {
     private let examLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "Fecha del examen"
+        label.text = Constants.reminderExamDateText
         label.font = UIFont.systemFont(ofSize: 16)
         return label
     }()
@@ -103,7 +102,7 @@ final class ReminderCell: UITableViewCell {
     
     private let seeMoreLabel: UILabel = {
         let label = UILabel()
-        label.text = "Ver más"
+        label.text = Constants.reminderSeeMore
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .systemBlue
         return label
@@ -128,7 +127,7 @@ final class ReminderCell: UITableViewCell {
         containerView.anchor(top:topAnchor, paddingTop: 10,
                              leading: leadingAnchor, leadingPadding: 15,
                              trailing: trailingAnchor, trailingPadding: 15,
-                             height: ReminderCell.cellHeight)
+                             height: Constants.cellHeight)
         
     }
 }

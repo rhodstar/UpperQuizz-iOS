@@ -47,7 +47,7 @@ extension RemindersController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return ReminderCell.cellHeight + 20
+        return Constants.cellHeight + 20
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
