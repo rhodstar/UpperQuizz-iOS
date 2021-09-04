@@ -31,35 +31,25 @@ final class ReminderCell: UITableViewCell {
         containerCoverImage.addSubview(coverImage)
         coverImage.anchor(top:containerCoverImage.topAnchor,bottom: containerCoverImage.bottomAnchor, leading: containerCoverImage.leadingAnchor, trailing: containerCoverImage.trailingAnchor)
         
-        containerView.addSubview(textLabelsContainer)
-        textLabelsContainer.anchor(top:containerView.topAnchor,bottom: containerView.bottomAnchor, leading: coverImage.trailingAnchor,trailing: containerView.trailingAnchor)
+        containerView.addSubview(itemTitleLabel)
+        itemTitleLabel.anchor(top: containerView.topAnchor, paddingTop: 8, leading: containerCoverImage.trailingAnchor, leadingPadding: 10)
+        
+        containerView.addSubview(announcementLabel)
+        announcementLabel.anchor(top:itemTitleLabel.topAnchor, paddingTop: 30, leading: containerCoverImage.trailingAnchor, leadingPadding: 10, width: 100)
+        
+        containerView.addSubview(examLabel)
+        examLabel.anchor(top:announcementLabel.topAnchor, paddingTop: 50, leading: containerCoverImage.trailingAnchor, leadingPadding: 10, width: 100)
+        
+        containerView.addSubview(announcementDateLabel)
+        announcementDateLabel.anchor(top:itemTitleLabel.topAnchor, paddingTop: 30, trailing: containerView.trailingAnchor, trailingPadding: 5, width: 130)
+        
+        containerView.addSubview(examDateLabel)
+        examDateLabel.anchor(top:announcementDateLabel.topAnchor, paddingTop: 50, trailing: containerView.trailingAnchor, trailingPadding: 5, width: 130)
+        
+        containerView.addSubview(seeMoreLabel)
+        seeMoreLabel.anchor(bottom: containerView.bottomAnchor, paddingBottom: -10, trailing: containerView.trailingAnchor, trailingPadding: 15)
 
         return containerView
-    }()
-    
-    private lazy var textLabelsContainer: UIView = {
-        let tvContainer = UIView()
-        tvContainer.backgroundColor = .white
-        
-        tvContainer.addSubview(itemTitleLabel)
-        itemTitleLabel.anchor(top: tvContainer.topAnchor, paddingTop: 8, leading: tvContainer.leadingAnchor, leadingPadding: 10)
-        
-        tvContainer.addSubview(announcementLabel)
-        announcementLabel.anchor(top:itemTitleLabel.topAnchor, paddingTop: 30, leading: tvContainer.leadingAnchor, leadingPadding: 10, width: 100)
-        
-        tvContainer.addSubview(examLabel)
-        examLabel.anchor(top:announcementLabel.topAnchor, paddingTop: 50, leading: tvContainer.leadingAnchor, leadingPadding: 10, width: 100)
-        
-        tvContainer.addSubview(announcementDateLabel)
-        announcementDateLabel.anchor(top:itemTitleLabel.topAnchor, paddingTop: 30, trailing: tvContainer.trailingAnchor, trailingPadding: 5, width: 130)
-        
-        tvContainer.addSubview(examDateLabel)
-        examDateLabel.anchor(top:announcementDateLabel.topAnchor, paddingTop: 50, trailing: tvContainer.trailingAnchor, trailingPadding: 5, width: 130)
-        
-        tvContainer.addSubview(seeMoreLabel)
-        seeMoreLabel.anchor(bottom: tvContainer.bottomAnchor, paddingBottom: -10, trailing: tvContainer.trailingAnchor, trailingPadding: 15)
-        
-        return tvContainer
     }()
     
     // MARK: - Properties
