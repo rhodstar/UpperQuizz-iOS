@@ -17,13 +17,19 @@ final class ReminderCell: UITableViewCell {
     
     // MARK: - Containers
     private lazy var containerView: UIView = {
-        let containerView = RoundedUIView()
-        containerView.cardStyle()
+        let containerView = UIView()
+        containerView.cardStyle(radius: 10.0)
         containerView.backgroundColor = .systemBackground
         containerView.translatesAutoresizingMaskIntoConstraints = false
         
-        containerView.addSubview(coverImage)
-        coverImage.anchor(top: containerView.topAnchor, bottom: containerView.bottomAnchor, leading: containerView.leadingAnchor,width: 100)
+        let containerCoverImage = RoundedUIView()
+        containerCoverImage.customCorners = [.topLeft, .bottomLeft]
+        
+        containerView.addSubview(containerCoverImage)
+        containerCoverImage.anchor(top: containerView.topAnchor, bottom: containerView.bottomAnchor, leading: containerView.leadingAnchor,width: 100)
+        
+        containerCoverImage.addSubview(coverImage)
+        coverImage.anchor(top:containerCoverImage.topAnchor,bottom: containerCoverImage.bottomAnchor, leading: containerCoverImage.leadingAnchor, trailing: containerCoverImage.trailingAnchor)
         
         containerView.addSubview(textLabelsContainer)
         textLabelsContainer.anchor(top:containerView.topAnchor,bottom: containerView.bottomAnchor, leading: coverImage.trailingAnchor,trailing: containerView.trailingAnchor)
