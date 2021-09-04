@@ -14,6 +14,12 @@ final class ReminderCell: UITableViewCell {
     
     private weak var reminderTitleLabel: UILabel?
     
+    public var reminder: Reminder? {
+        didSet {
+            updateView()
+        }
+    }
+    
     // MARK: - Containers
     private lazy var containerView: UIView = {
         let containerView = UIView()
@@ -129,6 +135,14 @@ final class ReminderCell: UITableViewCell {
                              trailing: trailingAnchor, trailingPadding: 15,
                              height: Constants.cellHeight)
         
+    }
+    
+    private func updateView() {
+        guard let reminder = reminder else { return }
+        self.itemTitleLabel.text = reminder.reminderTitle
+        self.announcementDateLabel.text = reminder.announcementDate
+        self.examDateLabel.text = reminder.examenDate
+        self.coverImage.image = UIImage(named: reminder.imageThumbnail)
     }
 }
 

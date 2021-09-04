@@ -19,4 +19,7 @@ struct Constants {
     static let reminderAnnounceText = "Fecha de la convocatoria"
     static let reminderExamDateText = "Fecha del examen"
     static let reminderSeeMore = "Ver más"
+    
+    //Constants for ReminderController
+    static let backupURL = "https://blog.unitips.mx"
 }
