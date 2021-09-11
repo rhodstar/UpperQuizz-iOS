@@ -13,6 +13,7 @@
 		66BBA88126B25F9400D26B99 /* examen.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BBA87F26B25F9400D26B99 /* examen.json */; };
 		66BBA88226B25F9400D26B99 /* evaluaciones.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BBA88026B25F9400D26B99 /* evaluaciones.json */; };
 		66BBA88D26B264F300D26B99 /* LogicaModelosVista.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BBA88C26B264F300D26B99 /* LogicaModelosVista.swift */; };
+		881AE2EB26E08A4800304B24 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881AE2EA26E08A4800304B24 /* CircularProgressBarView.swift */; };
 		88348DD626CB70DA0064CFC8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88348DD526CB70DA0064CFC8 /* Constants.swift */; };
 		88348DD926CB74490064CFC8 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88348DD826CB74490064CFC8 /* UIViewExtension.swift */; };
 		88348DDB26CB9F3B0064CFC8 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88348DDA26CB9F3B0064CFC8 /* UIColorExtension.swift */; };
@@ -27,6 +28,7 @@
 		88BC912926A698C5003CACE6 /* ProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC912826A698C5003CACE6 /* ProgressController.swift */; };
 		88CC5BC226B4C58A00E97021 /* Evaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CC5BC126B4C58A00E97021 /* Evaluation.swift */; };
 		88CC5BC426B4C81E00E97021 /* EvaluationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CC5BC326B4C81E00E97021 /* EvaluationCell.swift */; };
+		88D8DB6826EC3C210047C977 /* EvaluationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8DB6726EC3C210047C977 /* EvaluationViewModel.swift */; };
 		88FC8DC026AD1F4200451447 /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FC8DBF26AD1F4200451447 /* LocalDataManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,7 @@
 		66BBA87F26B25F9400D26B99 /* examen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = examen.json; sourceTree = "<group>"; };
 		66BBA88026B25F9400D26B99 /* evaluaciones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = evaluaciones.json; sourceTree = "<group>"; };
 		66BBA88C26B264F300D26B99 /* LogicaModelosVista.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicaModelosVista.swift; sourceTree = "<group>"; };
+		881AE2EA26E08A4800304B24 /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
 		88348DD526CB70DA0064CFC8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		88348DD826CB74490064CFC8 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		88348DDA26CB9F3B0064CFC8 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -66,6 +69,7 @@
 		88BC912826A698C5003CACE6 /* ProgressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressController.swift; sourceTree = "<group>"; };
 		88CC5BC126B4C58A00E97021 /* Evaluation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evaluation.swift; sourceTree = "<group>"; };
 		88CC5BC326B4C81E00E97021 /* EvaluationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCell.swift; sourceTree = "<group>"; };
+		88D8DB6726EC3C210047C977 /* EvaluationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationViewModel.swift; sourceTree = "<group>"; };
 		88FC8DBF26AD1F4200451447 /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				88CC5BC326B4C81E00E97021 /* EvaluationCell.swift */,
+				881AE2EA26E08A4800304B24 /* CircularProgressBarView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				66BBA88C26B264F300D26B99 /* LogicaModelosVista.swift */,
+				88D8DB6726EC3C210047C977 /* EvaluationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -308,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				881AE2EB26E08A4800304B24 /* CircularProgressBarView.swift in Sources */,
 				88BC912526A698AD003CACE6 /* RemindersController.swift in Sources */,
 				88348DD626CB70DA0064CFC8 /* Constants.swift in Sources */,
 				88BC912726A698BA003CACE6 /* EvaluationController.swift in Sources */,
@@ -318,6 +325,7 @@
 				88348DD926CB74490064CFC8 /* UIViewExtension.swift in Sources */,
 				88BC912326A6966A003CACE6 /* MainTabBarController.swift in Sources */,
 				887E8ADA26A6923D00D62859 /* SceneDelegate.swift in Sources */,
+				88D8DB6826EC3C210047C977 /* EvaluationViewModel.swift in Sources */,
 				88CC5BC426B4C81E00E97021 /* EvaluationCell.swift in Sources */,
 				88FC8DC026AD1F4200451447 /* LocalDataManager.swift in Sources */,
 				88CC5BC226B4C58A00E97021 /* Evaluation.swift in Sources */,

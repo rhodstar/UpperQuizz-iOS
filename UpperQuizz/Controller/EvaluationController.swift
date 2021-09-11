@@ -9,11 +9,16 @@ import UIKit
 
 // MARK: - MainTabController Class
 final class EvaluationController: UITableViewController {
+    // MARK: - Properties
+    var evaluations: [Evaluation]? = []
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
         configureTableView()
+        evaluations = LocalDataManager.getData(of: [Evaluation].self, from: "evaluaciones")
+        print(evaluations)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,16 +42,18 @@ final class EvaluationController: UITableViewController {
 // MARK: - UICollectionViewDataSource
 extension EvaluationController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return evaluations?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: EvaluationCell.reuseId, for: indexPath) as! EvaluationCell
+        guard let currentEvaluation = evaluations?[indexPath.row] else { return UITableViewCell() }
+        cell.viewModel = EvaluationViewModel(evaluation: currentEvaluation)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 100
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
