@@ -9,6 +9,7 @@ import UIKit
 
 struct Constants {
     static let evaluationTitle = "Evaluaciones"
+    static let reminderTitle = "Recordatorios"
     static let backgroundColor = UIColor(rgb: 0xFAFAFF)
     static let primaryColor = UIColor(rgb: 0x3C4E90)
     static let secondaryColor = UIColor(rgb: 0xDADDD8)
