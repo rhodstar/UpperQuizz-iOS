@@ -13,6 +13,7 @@ protocol AuthenticationDelegate: AnyObject {
 
 final class LoginController: UIViewController {
     // MARK: - Properties
+    private weak var logoImage: UIImageView?
     private weak var emailTextField: UITextField?
     private weak var passwordTextField: UITextField?
     private weak var loginButton: UIButton?
@@ -25,6 +26,12 @@ final class LoginController: UIViewController {
         configureUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.barStyle = .black
+    }
+    
     // MARK: - Actions
     @objc func handleShowSignUp() {
         let registrationController = RegistrationController()
@@ -35,10 +42,16 @@ final class LoginController: UIViewController {
     // MARK: - Helper functions
     func configureUI() {
         view.backgroundColor = Constants.primaryColor
-        navigationController?.navigationBar.isHidden = true
-        navigationController?.navigationBar.barStyle = .black
+        
+        let logoImage = UIImageView()
+        logoImage.image = UIImage(named: "UpperQuizz")
+        logoImage.contentMode = .scaleAspectFill
+        logoImage.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(logoImage)
+        self.logoImage = logoImage
         
         let emailTextField = UQTextField(placeholder: "Email")
+        emailTextField.autocapitalizationType = .none
         emailTextField.keyboardType = .emailAddress
         self.emailTextField = emailTextField
         
@@ -47,7 +60,7 @@ final class LoginController: UIViewController {
         self.passwordTextField = passwordTextField
         
         let loginButton = UIButton(type: .system)
-        loginButton.setTitle("Log in", for: .normal)
+        loginButton.setTitle("Iniciar sesión", for: .normal)
         loginButton.setTitleColor(.white, for: .normal)
         loginButton.backgroundColor = #colorLiteral(red: 0.3501588404, green: 0.4323381186, blue: 0.6990520358, alpha: 1).withAlphaComponent(0.5)
         loginButton.layer.cornerRadius = 5
@@ -55,9 +68,11 @@ final class LoginController: UIViewController {
         loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         loginButton.isEnabled = false
         //loginButton.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+        self.loginButton = loginButton
         
         let registerButtonNavigation = UIButton(type: .system)
-        registerButtonNavigation.attributedTitle(firstPart: "¿No tienes una cuenta? ", secondPart: "Regístrate")
+        registerButtonNavigation.attributedTitle(firstPart: "¿No tienes una cuenta?", secondPart: "Regístrate")
+        registerButtonNavigation.contentHorizontalAlignment = .leading
         registerButtonNavigation.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         self.registerButtonNavigation = registerButtonNavigation
         
@@ -68,7 +83,12 @@ final class LoginController: UIViewController {
         view.addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            logoImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
+            logoImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoImage.heightAnchor.constraint(equalToConstant: 200),
+            logoImage.widthAnchor.constraint(equalToConstant: 140),
+            
+            stackView.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 16),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
