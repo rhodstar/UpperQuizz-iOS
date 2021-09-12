@@ -7,12 +7,17 @@
 
 import Foundation
 
-struct Evaluation {
+// MARK: - Evalucion
+struct Evaluation: Codable {
     let examenId: Int
     let nombreExamen: String
-    let status: String
-    let aciertos: Int
-    let numPreguntasContestadas: Int
-    let totalPreguntas: Int
-    let intentos: Int
+    let status: EvaluationState
+    let aciertos, numPreguntasContestadas, totalPreguntas, intentos: Int
 }
+
+enum EvaluationState: String, Codable {
+    case finished = "T"
+    case incomplete = "I"
+    case initial = "N"
+}
+

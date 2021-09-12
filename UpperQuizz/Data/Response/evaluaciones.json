@@ -1,30 +1,29 @@
-{
-    "evaluciones": [{
-            "examen_id": 1,
-            "nombre_examen": "Examen 1",
-            "status": "I",
-            "aciertos": 9,
-            "num_preguntas_contestadas": 10,
-            "total_preguntas": 20,
-            "intentos": 0
-        },
-        {
-            "examen_id": 2,
-            "nombre_examen": "Examen 2",
-            "status": "T",
-            "aciertos": 9,
-            "num_preguntas_contestadas": 10,
-            "total_preguntas": 20,
-            "intentos": 0
-        },
-        {
-            "examen_id": 3,
-            "nombre_examen": "Examen 2",
-            "status": "N",
-            "aciertos": 9,
-            "num_preguntas_Contestadas": 10,
-            "total_preguntas": 20,
-            "intentos": 0
-        }
-    ]
-}
+[
+    {
+        "examen_id": 1,
+        "nombre_examen": "Examen 1",
+        "status": "I",
+        "aciertos": 9,
+        "num_preguntas_contestadas": 12,
+        "total_preguntas": 20,
+        "intentos": 0
+    },
+    {
+        "examen_id": 2,
+        "nombre_examen": "Examen 2",
+        "status": "T",
+        "aciertos": 9,
+        "num_preguntas_contestadas": 20,
+        "total_preguntas": 20,
+        "intentos": 0
+    },
+    {
+        "examen_id": 3,
+        "nombre_examen": "Examen UNAM 2022",
+        "status": "N",
+        "aciertos": 0,
+        "num_preguntas_contestadas": 0,
+        "total_preguntas": 20,
+        "intentos": 0
+    }
+]

@@ -25,17 +25,19 @@ final class LocalDataManager {
                 return data
             }
         } catch {
-            debugPrint("[-] Error: \(error.localizedDescription)")
+            debugPrint("[-] Error Read File: \(error.localizedDescription)")
         }
         return nil
     }
     
     private static func parseModelJSON<T: Codable>(of type: T.Type, from data: Data) -> T? {
         do {
-            let decodedData: T = try JSONDecoder().decode(T.self, from: data)
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            let decodedData: T = try decoder.decode(T.self, from: data)
             return decodedData
         } catch {
-            debugPrint("[-] Error: \(error.localizedDescription)")
+            debugPrint("[-] Error Convert File: \(error.localizedDescription)")
         }
         return nil
     }

@@ -22,4 +22,6 @@ struct Constants {
     
     //Constants for ReminderController
     static let backupURL = "https://blog.unitips.mx"
+
+    static let secondaryColor = UIColor(rgb: 0xDADDD8)
 }
