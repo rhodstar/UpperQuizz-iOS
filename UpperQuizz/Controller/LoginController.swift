@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AuthenticationDelegate: AnyObject {
-    func authenticationDidComplete()
+    func authenticationDidComplete(user: User)
 }
 
 final class LoginController: UIViewController {
@@ -39,6 +39,21 @@ final class LoginController: UIViewController {
         navigationController?.pushViewController(registrationController, animated: true)
     }
     
+    @objc func handleLogin() {
+        guard let email = emailTextField?.text else { return }
+        guard let password = passwordTextField?.text else { return }
+        let credentials = LoginCredentials(correo: email, contrasena: password)
+        AuthenticationService.sharedInstance.logUserIn(with: credentials) { result in
+            switch result {
+            case .success(let user):
+                guard let user = user else { return }
+                self.delegate?.authenticationDidComplete(user: user)
+            case.failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     // MARK: - Helper functions
     func configureUI() {
         view.backgroundColor = Constants.primaryColor
@@ -53,10 +68,12 @@ final class LoginController: UIViewController {
         let emailTextField = UQTextField(placeholder: "Email")
         emailTextField.autocapitalizationType = .none
         emailTextField.keyboardType = .emailAddress
+        emailTextField.text = "rodrigo@gmail.com"
         self.emailTextField = emailTextField
         
         let passwordTextField = UQTextField(placeholder: "Password")
         passwordTextField.isSecureTextEntry = true
+        passwordTextField.text = "diplomado123"
         self.passwordTextField = passwordTextField
         
         let loginButton = UIButton(type: .system)
@@ -66,8 +83,8 @@ final class LoginController: UIViewController {
         loginButton.layer.cornerRadius = 5
         loginButton.setHeight(50)
         loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        loginButton.isEnabled = false
-        //loginButton.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+        // loginButton.isEnabled = false
+        loginButton.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         self.loginButton = loginButton
         
         let registerButtonNavigation = UIButton(type: .system)

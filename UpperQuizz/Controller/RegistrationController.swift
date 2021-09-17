@@ -36,6 +36,19 @@ final class RegistrationController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @objc func handleSignUp() {
+        guard let username = usernameTextField?.text else { return }
+        guard let lastname = lastnameTextField?.text else { return }
+        guard let email = emailTextField?.text else { return }
+        guard let password = self.passwordTextField?.text else { return }
+        
+        let credentials = RegisterCredentials(nombre: username, apellidos: lastname, correo: email, contrasena: password)
+        
+        AuthenticationService.sharedInstance.registerUser(with: credentials) { message in
+            print(message)
+        }
+    }
+    
     // MARK: - Helper functions
     private func configureUI() {
         view.backgroundColor = Constants.primaryColor
@@ -44,6 +57,7 @@ final class RegistrationController: UIViewController {
         let lastnameTextField = UQTextField(placeholder: "Apellidos")
         self.lastnameTextField = lastnameTextField
         let emailTextField = UQTextField(placeholder: "Email")
+        emailTextField.autocapitalizationType = .none
         emailTextField.keyboardType = .emailAddress
         self.emailTextField = emailTextField
         let passwordTextField = UQTextField(placeholder: "Password")
@@ -57,8 +71,8 @@ final class RegistrationController: UIViewController {
         signUpButton.layer.cornerRadius = 5
         signUpButton.setHeight(50)
         signUpButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        signUpButton.isEnabled = false
-        // signUpButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+        //signUpButton.isEnabled = false
+        signUpButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         self.signUpButton = signUpButton
         
         let loginButtonNavigation = UIButton()
