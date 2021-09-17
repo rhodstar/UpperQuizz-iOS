@@ -26,10 +26,18 @@ final class EvaluationController: UITableViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    // MARK: - Actions
+    @objc func handleLogout() {
+        AuthenticationService.sharedInstance.logUserOut(viewController: self)
+    }
+    
     // MARK: - Helpers
     func configureViewController() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.title = Constants.evaluationTitle
+        
+        let logoutButton = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+        navigationItem.rightBarButtonItem = logoutButton
     }
     
     func configureTableView() {
