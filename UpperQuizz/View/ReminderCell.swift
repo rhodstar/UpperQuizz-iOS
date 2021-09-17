@@ -11,48 +11,50 @@ import UIKit
 final class ReminderCell: UITableViewCell {
     // MARK: - Identifier
     static let reuseId = "reminderCell"
-    static let cellHeight: CGFloat = 160
     
     private weak var reminderTitleLabel: UILabel?
     
+    public var reminder: Reminder? {
+        didSet {
+            updateView()
+        }
+    }
+    
     // MARK: - Containers
     private lazy var containerView: UIView = {
-        let containerView = RoundedUIView()
+        let containerView = UIView()
+        containerView.cardStyle(radius: 10.0)
         containerView.backgroundColor = .systemBackground
         containerView.translatesAutoresizingMaskIntoConstraints = false
         
-        containerView.addSubview(coverImage)
-        coverImage.anchor(top: containerView.topAnchor, bottom: containerView.bottomAnchor, leading: containerView.leadingAnchor,width: 100)
+        let containerCoverImage = RoundedUIView()
+        containerCoverImage.customCorners = [.topLeft, .bottomLeft]
         
-        containerView.addSubview(textLabelsContainer)
-        textLabelsContainer.anchor(top:containerView.topAnchor,bottom: containerView.bottomAnchor, leading: coverImage.trailingAnchor,trailing: containerView.trailingAnchor)
+        containerView.addSubview(containerCoverImage)
+        containerCoverImage.anchor(top: containerView.topAnchor, bottom: containerView.bottomAnchor, leading: containerView.leadingAnchor,width: 100)
+        
+        containerCoverImage.addSubview(coverImage)
+        coverImage.anchor(top:containerCoverImage.topAnchor,bottom: containerCoverImage.bottomAnchor, leading: containerCoverImage.leadingAnchor, trailing: containerCoverImage.trailingAnchor)
+        
+        containerView.addSubview(itemTitleLabel)
+        itemTitleLabel.anchor(top: containerView.topAnchor, paddingTop: 8, leading: containerCoverImage.trailingAnchor, leadingPadding: 10)
+        
+        containerView.addSubview(announcementLabel)
+        announcementLabel.anchor(top:itemTitleLabel.topAnchor, paddingTop: 30, leading: containerCoverImage.trailingAnchor, leadingPadding: 10, width: 100)
+        
+        containerView.addSubview(examLabel)
+        examLabel.anchor(top:announcementLabel.topAnchor, paddingTop: 50, leading: containerCoverImage.trailingAnchor, leadingPadding: 10, width: 100)
+        
+        containerView.addSubview(announcementDateLabel)
+        announcementDateLabel.anchor(top:itemTitleLabel.topAnchor, paddingTop: 30, trailing: containerView.trailingAnchor, trailingPadding: 5, width: 130)
+        
+        containerView.addSubview(examDateLabel)
+        examDateLabel.anchor(top:announcementDateLabel.topAnchor, paddingTop: 50, trailing: containerView.trailingAnchor, trailingPadding: 5, width: 130)
+        
+        containerView.addSubview(seeMoreLabel)
+        seeMoreLabel.anchor(bottom: containerView.bottomAnchor, paddingBottom: -10, trailing: containerView.trailingAnchor, trailingPadding: 15)
 
         return containerView
-    }()
-    
-
-    private lazy var textLabelsContainer: UIView = {
-        let tvContainer = UIView()
-        
-        tvContainer.addSubview(itemTitleLabel)
-        itemTitleLabel.anchor(top: tvContainer.topAnchor, paddingTop: 8, leading: tvContainer.leadingAnchor, leadingPadding: 10)
-        
-        tvContainer.addSubview(announcementLabel)
-        announcementLabel.anchor(top:itemTitleLabel.topAnchor, paddingTop: 30, leading: tvContainer.leadingAnchor, leadingPadding: 10, width: 100)
-        
-        tvContainer.addSubview(examLabel)
-        examLabel.anchor(top:announcementLabel.topAnchor, paddingTop: 50, leading: tvContainer.leadingAnchor, leadingPadding: 10, width: 100)
-        
-        tvContainer.addSubview(announcementDateLabel)
-        announcementDateLabel.anchor(top:itemTitleLabel.topAnchor, paddingTop: 30, trailing: tvContainer.trailingAnchor, trailingPadding: -5, width: 130)
-        
-        tvContainer.addSubview(examDateLabel)
-        examDateLabel.anchor(top:announcementDateLabel.topAnchor, paddingTop: 50, trailing: tvContainer.trailingAnchor, trailingPadding: -5, width: 130)
-        
-        tvContainer.addSubview(seeMoreLabel)
-        seeMoreLabel.anchor(bottom: tvContainer.bottomAnchor, paddingBottom: -10, trailing: tvContainer.trailingAnchor, trailingPadding: -15)
-        
-        return tvContainer
     }()
     
     // MARK: - Properties
@@ -65,7 +67,7 @@ final class ReminderCell: UITableViewCell {
     
     private let itemTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Primera vuelta UNAM"
+        label.text = Constants.reminderItemTitle
         label.font = UIFont.boldSystemFont(ofSize: 18)
         return label
     }()
@@ -73,7 +75,7 @@ final class ReminderCell: UITableViewCell {
     private let announcementLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "Fecha de la convocatoria"
+        label.text = Constants.reminderAnnounceText
         label.font = UIFont.systemFont(ofSize: 16)
         return label
     }()
@@ -90,7 +92,7 @@ final class ReminderCell: UITableViewCell {
     private let examLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "Fecha del examen"
+        label.text = Constants.reminderExamDateText
         label.font = UIFont.systemFont(ofSize: 16)
         return label
     }()
@@ -106,7 +108,7 @@ final class ReminderCell: UITableViewCell {
     
     private let seeMoreLabel: UILabel = {
         let label = UILabel()
-        label.text = "Ver más"
+        label.text = Constants.reminderSeeMore
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .systemBlue
         return label
@@ -130,9 +132,17 @@ final class ReminderCell: UITableViewCell {
         addSubview(containerView)
         containerView.anchor(top:topAnchor, paddingTop: 10,
                              leading: leadingAnchor, leadingPadding: 15,
-                             trailing: trailingAnchor, trailingPadding: -15,
-                             height: ReminderCell.cellHeight)
+                             trailing: trailingAnchor, trailingPadding: 15,
+                             height: Constants.cellHeight)
         
+    }
+    
+    private func updateView() {
+        guard let reminder = reminder else { return }
+        self.itemTitleLabel.text = reminder.reminderTitle
+        self.announcementDateLabel.text = reminder.announcementDate
+        self.examDateLabel.text = reminder.examenDate
+        self.coverImage.image = UIImage(named: reminder.imageThumbnail)
     }
 }
 

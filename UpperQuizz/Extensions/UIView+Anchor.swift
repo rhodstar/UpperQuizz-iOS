@@ -41,7 +41,7 @@ extension UIView {
         }
         
         if let trailing = trailing {
-            trailingAnchor.constraint(equalTo: trailing, constant: trailingPadding).isActive = true
+            trailingAnchor.constraint(equalTo: trailing, constant: -trailingPadding).isActive = true
         }
         
         if let leading = leading {
