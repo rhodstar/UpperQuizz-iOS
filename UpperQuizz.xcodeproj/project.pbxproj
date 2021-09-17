@@ -21,6 +21,10 @@
 		66BBA88126B25F9400D26B99 /* examen.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BBA87F26B25F9400D26B99 /* examen.json */; };
 		66BBA88226B25F9400D26B99 /* evaluaciones.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BBA88026B25F9400D26B99 /* evaluaciones.json */; };
 		66BBA88D26B264F300D26B99 /* LogicaModelosVista.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BBA88C26B264F300D26B99 /* LogicaModelosVista.swift */; };
+		8812C49A26ED638B00672C55 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8812C49926ED638B00672C55 /* LoginController.swift */; };
+		8812C49C26ED639500672C55 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8812C49B26ED639500672C55 /* RegistrationController.swift */; };
+		8812C49E26ED659800672C55 /* UQTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8812C49D26ED659800672C55 /* UQTextField.swift */; };
+		8812C4A026ED692F00672C55 /* UIButton+AttributedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8812C49F26ED692F00672C55 /* UIButton+AttributedText.swift */; };
 		881AE2EB26E08A4800304B24 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881AE2EA26E08A4800304B24 /* CircularProgressBarView.swift */; };
 		88348DD626CB70DA0064CFC8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88348DD526CB70DA0064CFC8 /* Constants.swift */; };
 		88348DD926CB74490064CFC8 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88348DD826CB74490064CFC8 /* UIViewExtension.swift */; };
@@ -28,6 +32,10 @@
 		887E8AD826A6923D00D62859 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E8AD726A6923D00D62859 /* AppDelegate.swift */; };
 		887E8ADA26A6923D00D62859 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E8AD926A6923D00D62859 /* SceneDelegate.swift */; };
 		887E8AE126A6923E00D62859 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 887E8AE026A6923E00D62859 /* Assets.xcassets */; };
+		8887338426F1B68900EAB24D /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8887338326F1B68900EAB24D /* AuthenticationService.swift */; };
+		8887338826F1B97D00EAB24D /* AuthCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8887338726F1B97D00EAB24D /* AuthCredentials.swift */; };
+		8887338A26F1D01500EAB24D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8887338926F1D01500EAB24D /* User.swift */; };
+		8887338C26F3206500EAB24D /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8887338B26F3206500EAB24D /* UserService.swift */; };
 		88B6B0B926DC652F0091E099 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B6B0B826DC652F0091E099 /* Alamofire.xcframework */; };
 		88B6B0BA26DC652F0091E099 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 88B6B0B826DC652F0091E099 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		88BC912326A6966A003CACE6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC912226A6966A003CACE6 /* MainTabBarController.swift */; };
@@ -73,6 +81,10 @@
 		66BBA87F26B25F9400D26B99 /* examen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = examen.json; sourceTree = "<group>"; };
 		66BBA88026B25F9400D26B99 /* evaluaciones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = evaluaciones.json; sourceTree = "<group>"; };
 		66BBA88C26B264F300D26B99 /* LogicaModelosVista.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicaModelosVista.swift; sourceTree = "<group>"; };
+		8812C49926ED638B00672C55 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		8812C49B26ED639500672C55 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		8812C49D26ED659800672C55 /* UQTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UQTextField.swift; sourceTree = "<group>"; };
+		8812C49F26ED692F00672C55 /* UIButton+AttributedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+AttributedText.swift"; sourceTree = "<group>"; };
 		881AE2EA26E08A4800304B24 /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
 		88348DD526CB70DA0064CFC8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		88348DD826CB74490064CFC8 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -82,6 +94,10 @@
 		887E8AD926A6923D00D62859 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		887E8AE026A6923E00D62859 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		887E8AE526A6923E00D62859 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8887338326F1B68900EAB24D /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		8887338726F1B97D00EAB24D /* AuthCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCredentials.swift; sourceTree = "<group>"; };
+		8887338926F1D01500EAB24D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8887338B26F3206500EAB24D /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		88B6B0B826DC652F0091E099 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
 		88BC912226A6966A003CACE6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		88BC912426A698AD003CACE6 /* RemindersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersController.swift; sourceTree = "<group>"; };
@@ -143,6 +159,8 @@
 				664C971426B64C5600A06F6B /* miProgreso.swift */,
 				88CC5BC126B4C58A00E97021 /* Evaluation.swift */,
 				66A03F3C26D082B900782FE0 /* examenTerminado.swift */,
+				8887338726F1B97D00EAB24D /* AuthCredentials.swift */,
+				8887338926F1D01500EAB24D /* User.swift */,
 				CF0AF73826E31DDD00321EEC /* Reminder.swift */,
 			);
 			path = Model;
@@ -160,6 +178,7 @@
 				88CC5BC326B4C81E00E97021 /* EvaluationCell.swift */,
 				881AE2EA26E08A4800304B24 /* CircularProgressBarView.swift */,
 				CFE4E5B126DFDBD300162BDB /* ReminderCell.swift */,
+				8812C49D26ED659800672C55 /* UQTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -171,6 +190,15 @@
 				88D8DB6726EC3C210047C977 /* EvaluationViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8812C49826ED637F00672C55 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				8812C49926ED638B00672C55 /* LoginController.swift */,
+				8812C49B26ED639500672C55 /* RegistrationController.swift */,
+			);
+			name = Authentication;
 			sourceTree = "<group>";
 		};
 		88348DD426CB70A00064CFC8 /* Common */ = {
@@ -190,6 +218,7 @@
 				88348DD826CB74490064CFC8 /* UIViewExtension.swift */,
 				88348DDA26CB9F3B0064CFC8 /* UIColorExtension.swift */,
 				CFE4E5B326DFDE8000162BDB /* UIView+Anchor.swift */,
+				8812C49F26ED692F00672C55 /* UIButton+AttributedText.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -238,6 +267,7 @@
 		88BC911E26A6956F003CACE6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8812C49826ED637F00672C55 /* Authentication */,
 				88BC912226A6966A003CACE6 /* MainTabBarController.swift */,
 				6675D29A26C838E800DBAF63 /* DetailVC.swift */,
 				88BC912426A698AD003CACE6 /* RemindersController.swift */,
@@ -251,6 +281,8 @@
 			isa = PBXGroup;
 			children = (
 				88FC8DBF26AD1F4200451447 /* LocalDataManager.swift */,
+				8887338326F1B68900EAB24D /* AuthenticationService.swift */,
+				8887338B26F3206500EAB24D /* UserService.swift */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -350,14 +382,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8812C49A26ED638B00672C55 /* LoginController.swift in Sources */,
+				8887338426F1B68900EAB24D /* AuthenticationService.swift in Sources */,
 				CF0AF73926E31DDD00321EEC /* Reminder.swift in Sources */,
 				881AE2EB26E08A4800304B24 /* CircularProgressBarView.swift in Sources */,
 				88BC912526A698AD003CACE6 /* RemindersController.swift in Sources */,
 				88BC912726A698BA003CACE6 /* EvaluationController.swift in Sources */,
 				664C971526B64C5600A06F6B /* miProgreso.swift in Sources */,
 				88348DD626CB70DA0064CFC8 /* Constants.swift in Sources */,
+				8812C49E26ED659800672C55 /* UQTextField.swift in Sources */,
+				8887338C26F3206500EAB24D /* UserService.swift in Sources */,
 				88BC912726A698BA003CACE6 /* EvaluationController.swift in Sources */,
 				CFE4E5B226DFDBD300162BDB /* ReminderCell.swift in Sources */,
+				8887338A26F1D01500EAB24D /* User.swift in Sources */,
 				887E8AD826A6923D00D62859 /* AppDelegate.swift in Sources */,
 				88BC912926A698C5003CACE6 /* ProgressController.swift in Sources */,
 				66A03F3D26D082B900782FE0 /* examenTerminado.swift in Sources */,
@@ -369,6 +406,8 @@
 				88BC912326A6966A003CACE6 /* MainTabBarController.swift in Sources */,
 				664C971D26B8B4DF00A06F6B /* LabelTittle.swift in Sources */,
 				887E8ADA26A6923D00D62859 /* SceneDelegate.swift in Sources */,
+				8812C4A026ED692F00672C55 /* UIButton+AttributedText.swift in Sources */,
+				8887338826F1B97D00EAB24D /* AuthCredentials.swift in Sources */,
 				88D8DB6826EC3C210047C977 /* EvaluationViewModel.swift in Sources */,
 				88CC5BC426B4C81E00E97021 /* EvaluationCell.swift in Sources */,
 				CFE4E5B626DFFE2A00162BDB /* RoundedUIView.swift in Sources */,
@@ -377,6 +416,7 @@
 				664C971926B7BD4B00A06F6B /* HorizontalProgressBar.swift in Sources */,
 				664C971726B7B29800A06F6B /* CircularProgressView.swift in Sources */,
 				88CC5BC226B4C58A00E97021 /* Evaluation.swift in Sources */,
+				8812C49C26ED639500672C55 /* RegistrationController.swift in Sources */,
 				CFE4E5B426DFDE8000162BDB /* UIView+Anchor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

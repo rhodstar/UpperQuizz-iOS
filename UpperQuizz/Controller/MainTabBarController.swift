@@ -12,10 +12,24 @@ final class MainTabBarController: UITabBarController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViewControllers()
+        checkIfUserIsLoggedIn()
     }
     
     // MARK: - Helpers
+    private func checkIfUserIsLoggedIn() {
+        if !UserService.shared.isUserLoggedIn {
+            DispatchQueue.main.async {
+                let loginController = LoginController()
+                loginController.delegate = self
+                let navigationController = UINavigationController(rootViewController: loginController)
+                navigationController.modalPresentationStyle = .fullScreen
+                self.present(navigationController, animated: true, completion: nil)
+            }
+        } else {
+            configureViewControllers()
+        }
+    }
+    
     private func configureViewControllers() {
         view.backgroundColor = .white
         UITabBar.appearance().tintColor = Constants.primaryColor
@@ -34,5 +48,13 @@ final class MainTabBarController: UITabBarController {
         navigationController.tabBarItem.selectedImage = selectedImage
         
         return navigationController
+    }
+}
+
+extension MainTabBarController: AuthenticationDelegate {
+    func authenticationDidComplete(user: User) {
+        UserService.shared.saveToken(token: user.token)
+        configureViewControllers()
+        self.dismiss(animated: true, completion: nil)
     }
 }
