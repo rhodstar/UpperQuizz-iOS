@@ -68,11 +68,6 @@ extension ProgressController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVcc = DetailVC()
         detailVcc.examenTerminado = examenTermiando2
-        for i in examenTermiando2!.puntaje_materia{
-            print(i)
-            print(i.nombre_materia)
-        }
-        
         self.present(detailVcc, animated: true)
     }
 }
