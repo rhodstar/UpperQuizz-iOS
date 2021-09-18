@@ -51,9 +51,9 @@ extension DetailVC: UITableViewDataSource{
         }
         viewCell.iconView = UIImageView(image: UIImage(systemName: "doc.plaintext.fill"))
         viewCell.nameLabel.text = examenTerminado?.puntaje_materia[indexPath.row].nombre_materia
-        viewCell.horizontalProgressBar.progress = CGFloat((examenTerminado?.puntaje_materia[indexPath.row].puntaje)!)/10
+        viewCell.horizontalProgressBar.progress = CGFloat((examenTerminado?.puntaje_materia[indexPath.row].puntaje ?? 0))/10
         //CGFloat((examenTerminado?.puntaje_materia[indexPath.row].puntaje)!)*10
-        viewCell.descriptionLabel.text = "Aciertos: " + String((examenTerminado?.puntaje_materia[indexPath.row].puntaje)!)
+        viewCell.descriptionLabel.text = "Aciertos: " + String((examenTerminado?.puntaje_materia[indexPath.row].puntaje ?? 0))
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -63,7 +63,12 @@ extension DetailVC: UITableViewDataSource{
 extension DetailVC{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 120))
-        labelMateria.text = "Calificación de examen: " + String(examenTerminado!.aciertos_totales)
+        if (examenTerminado != nil){
+            labelMateria.text = "Calificación de examen: " + String(examenTerminado!.aciertos_totales)
+        }else{
+            labelMateria.text = "Calificación de examen: 0"
+        }
+        
         header.addSubview(labelMateria)
         labelMateria.translatesAutoresizingMaskIntoConstraints = false
 
@@ -72,7 +77,12 @@ extension DetailVC{
             labelMateria.topAnchor.constraint(equalTo: header.topAnchor, constant: 15)
         ])
         let progresBar = HorizontalProgressBar()
-        progresBar.progress = CGFloat(examenTerminado!.aciertos_totales)/10
+        if (examenTerminado != nil){
+            progresBar.progress = CGFloat(examenTerminado!.aciertos_totales)/10
+        }else{
+            progresBar.progress = 0.01
+        }
+        
         header.addSubview(progresBar)
         progresBar.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
