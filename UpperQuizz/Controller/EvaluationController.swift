@@ -66,6 +66,9 @@ extension EvaluationController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO: Present questions for specific evaluation
-        print("DEBUG: Implement functionality here")
+        //print("DEBUG: Implement functionality here")
+        let vc = QuizzViewController()
+        self.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
