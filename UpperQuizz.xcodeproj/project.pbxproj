@@ -51,6 +51,7 @@
 		CF8B8E4326F906F0001EBD64 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8B8E4226F906F0001EBD64 /* Option.swift */; };
 		CF8B8E4726F90812001EBD64 /* QuizzViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8B8E4626F90812001EBD64 /* QuizzViewController.swift */; };
 		CF8B8E4926F95A9D001EBD64 /* QuizzService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8B8E4826F95A9D001EBD64 /* QuizzService.swift */; };
+		CFC08F1F26FA5D5200EBC579 /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC08F1E26FA5D5200EBC579 /* OptionCell.swift */; };
 		CFE4E5B226DFDBD300162BDB /* ReminderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4E5B126DFDBD300162BDB /* ReminderCell.swift */; };
 		CFE4E5B426DFDE8000162BDB /* UIView+Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4E5B326DFDE8000162BDB /* UIView+Anchor.swift */; };
 		CFE4E5B626DFFE2A00162BDB /* RoundedUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4E5B526DFFE2A00162BDB /* RoundedUIView.swift */; };
@@ -116,6 +117,7 @@
 		CF8B8E4226F906F0001EBD64 /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		CF8B8E4626F90812001EBD64 /* QuizzViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzViewController.swift; sourceTree = "<group>"; };
 		CF8B8E4826F95A9D001EBD64 /* QuizzService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzService.swift; sourceTree = "<group>"; };
+		CFC08F1E26FA5D5200EBC579 /* OptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCell.swift; sourceTree = "<group>"; };
 		CFE4E5B126DFDBD300162BDB /* ReminderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCell.swift; sourceTree = "<group>"; };
 		CFE4E5B326DFDE8000162BDB /* UIView+Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Anchor.swift"; sourceTree = "<group>"; };
 		CFE4E5B526DFFE2A00162BDB /* RoundedUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedUIView.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				881AE2EA26E08A4800304B24 /* CircularProgressBarView.swift */,
 				CFE4E5B126DFDBD300162BDB /* ReminderCell.swift */,
 				8812C49D26ED659800672C55 /* UQTextField.swift */,
+				CFC08F1E26FA5D5200EBC579 /* OptionCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFC08F1F26FA5D5200EBC579 /* OptionCell.swift in Sources */,
 				8812C49A26ED638B00672C55 /* LoginController.swift in Sources */,
 				CF8B8E4926F95A9D001EBD64 /* QuizzService.swift in Sources */,
 				CF8B8E4126F90687001EBD64 /* Question.swift in Sources */,

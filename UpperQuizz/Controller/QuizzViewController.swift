@@ -14,16 +14,17 @@ final class QuizzViewController: UIViewController {
     private weak var subjectLabel: UILabel?
     private weak var questionTextLabel: UILabel?
     
-    private weak var optionTextBoxA: UILabel?
-    private weak var optionTextBoxB: UILabel?
-    private weak var optionTextBoxC: UILabel?
-    private weak var optionTextBoxD: UILabel?
+    private weak var optionsTableView: UITableView?
     
     private weak var nextButton: UIButton?
     private weak var prevButton: UIButton?
     
     var questions: [Question]?
-    var questionIndex: Int = 0
+    var questionIndex: Int = 0 {
+        didSet {
+            updateNavButtons()
+        }
+    }
 
     //MARK:- Lifecycle
     override func viewDidLoad() {
@@ -49,9 +50,37 @@ final class QuizzViewController: UIViewController {
             Option(opcion_id: 7, texto_opcion: "9"),
             Option(opcion_id: 8, texto_opcion: "12"),
         ]
+        let optionsQ3 = [
+            Option(opcion_id: 9, texto_opcion: "5"),
+            Option(opcion_id: 10, texto_opcion: "-2"),
+            Option(opcion_id: 11, texto_opcion: "9"),
+            Option(opcion_id: 12, texto_opcion: "1"),
+        ]
+        let optionsQ4 = [
+            Option(opcion_id: 13, texto_opcion: "9"),
+            Option(opcion_id: 14, texto_opcion: "11"),
+            Option(opcion_id: 15, texto_opcion: "-9"),
+            Option(opcion_id: 16, texto_opcion: "2"),
+        ]
+        let optionsQ5 = [
+            Option(opcion_id: 17, texto_opcion: "-6"),
+            Option(opcion_id: 18, texto_opcion: "6"),
+            Option(opcion_id: 19, texto_opcion: "9"),
+            Option(opcion_id: 20, texto_opcion: "3"),
+        ]
+        let optionsQ6 = [
+            Option(opcion_id: 21, texto_opcion: "7"),
+            Option(opcion_id: 22, texto_opcion: "17"),
+            Option(opcion_id: 23, texto_opcion: "27"),
+            Option(opcion_id: 24, texto_opcion: "5"),
+        ]
         let questions = [
             Question(texto_pregunta: "¿Cómo estas?", opcion_correcta_id: 2, pregunta_id: 1, materia: "Matemáticas", opciones: optionsQ1),
             Question(texto_pregunta: "4+3", opcion_correcta_id: 6, pregunta_id: 2, materia:"Matemáticas", opciones: optionsQ2),
+            Question(texto_pregunta: "7-2", opcion_correcta_id: 9, pregunta_id: 3, materia:"Matemáticas", opciones: optionsQ3),
+            Question(texto_pregunta: "11-20", opcion_correcta_id: 15, pregunta_id: 4, materia:"Matemáticas", opciones: optionsQ4),
+            Question(texto_pregunta: "3+3", opcion_correcta_id: 18, pregunta_id: 5, materia:"Matemáticas", opciones: optionsQ5),
+            Question(texto_pregunta: "4+3", opcion_correcta_id: 21, pregunta_id: 6, materia:"Español", opciones: optionsQ6),
         ]
         
         self.questions = questions
@@ -62,13 +91,39 @@ final class QuizzViewController: UIViewController {
         self.title = "Pregunta \(index + 1)"
         subjectLabel?.text = currentQuestion?.materia
         questionTextLabel?.text = currentQuestion?.texto_pregunta
-        optionTextBoxA?.text = currentQuestion?.opciones[0].texto_opcion
-        optionTextBoxB?.text = currentQuestion?.opciones[1].texto_opcion
-        optionTextBoxC?.text = currentQuestion?.opciones[2].texto_opcion
-        optionTextBoxD?.text = currentQuestion?.opciones[3].texto_opcion
+    }
+    
+    @objc func handleNextQuestion() {
+        guard let questions = questions else { return }
+        if questionIndex < questions.count - 1 {
+            questionIndex += 1
+            configureQuestion(index: questionIndex)
+            optionsTableView?.reloadData()
+        }
+    }
+    
+    @objc func handlePrevQuestion() {
+        if questionIndex != 0 {
+            questionIndex -= 1
+            configureQuestion(index: questionIndex)
+            optionsTableView?.reloadData()
+        }
     }
     
     //MARK:- UI Helpers
+    func updateNavButtons() {
+        if questionIndex == 0 {
+            prevButton?.backgroundColor = .gray
+        } else {
+            prevButton?.backgroundColor = Constants.primaryColor
+        }
+        guard let questions = questions else { return }
+        if questionIndex == (questions.count - 1) {
+            nextButton?.backgroundColor = .gray
+        } else {
+            nextButton?.backgroundColor = Constants.primaryColor
+        }
+    }
     func configureViewController() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.title = "Pregunta ##"
@@ -104,70 +159,29 @@ final class QuizzViewController: UIViewController {
         containerView.addSubview(questionTextLabel)
         self.questionTextLabel = questionTextLabel
         
-        let cardBoxViewA = UIView()
-        cardBoxViewA.backgroundColor = .white
-        cardBoxViewA.cardStyle()
-        cardBoxViewA.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addSubview(cardBoxViewA)
-        
-        let cardBoxViewB = UIView()
-        cardBoxViewB.backgroundColor = .white
-        cardBoxViewB.cardStyle()
-        cardBoxViewB.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addSubview(cardBoxViewB)
-        
-        let cardBoxViewC = UIView()
-        cardBoxViewC.backgroundColor = .white
-        cardBoxViewC.cardStyle()
-        cardBoxViewC.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addSubview(cardBoxViewC)
-        
-        let cardBoxViewD = UIView()
-        cardBoxViewD.backgroundColor = .white
-        cardBoxViewD.cardStyle()
-        cardBoxViewD.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addSubview(cardBoxViewD)
-        
-        let optionTextBoxA = UILabel()
-        optionTextBoxA.text = "Opción A"
-        optionTextBoxA.numberOfLines = 0
-        optionTextBoxA.translatesAutoresizingMaskIntoConstraints = false
-        cardBoxViewA.addSubview(optionTextBoxA)
-        self.optionTextBoxA = optionTextBoxA
-        
-        let optionTextBoxB = UILabel()
-        optionTextBoxB.text = "Opción B"
-        optionTextBoxB.numberOfLines = 0
-        optionTextBoxB.translatesAutoresizingMaskIntoConstraints = false
-        cardBoxViewB.addSubview(optionTextBoxB)
-        self.optionTextBoxB = optionTextBoxB
-        
-        let optionTextBoxC = UILabel()
-        optionTextBoxC.text = "Opción C"
-        optionTextBoxC.numberOfLines = 0
-        optionTextBoxC.translatesAutoresizingMaskIntoConstraints = false
-        cardBoxViewC.addSubview(optionTextBoxC)
-        self.optionTextBoxC = optionTextBoxC
-        
-        let optionTextBoxD = UILabel()
-        optionTextBoxD.text = "Opción D"
-        optionTextBoxD.numberOfLines = 0
-        optionTextBoxD.translatesAutoresizingMaskIntoConstraints = false
-        cardBoxViewD.addSubview(optionTextBoxD)
-        self.optionTextBoxD = optionTextBoxD
+        let optionsTableView = UITableView()
+        optionsTableView.separatorStyle = .none	
+        optionsTableView.register(OptionCell.self, forCellReuseIdentifier: OptionCell.reuseId)
+        optionsTableView.dataSource = self
+        optionsTableView.delegate = self
+        optionsTableView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(optionsTableView)
+        self.optionsTableView = optionsTableView
         
         let nextButton = UIButton()
         nextButton.setTitle("Siguiente", for: .normal)
         nextButton.backgroundColor = Constants.primaryColor
         nextButton.setTitleColor(.white, for: .normal)
+        nextButton.addTarget(self, action: #selector(handleNextQuestion),for: .touchUpInside)
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(nextButton)
         self.nextButton = nextButton
-        
+
         let prevButton = UIButton()
         prevButton.setTitle("Anterior", for: .normal)
         prevButton.backgroundColor = Constants.primaryColor
         prevButton.setTitleColor(.white, for: .normal)
+        prevButton.addTarget(self, action: #selector(handlePrevQuestion), for: .touchUpInside)
         prevButton.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(prevButton)
         self.prevButton = prevButton
@@ -180,47 +194,38 @@ final class QuizzViewController: UIViewController {
             questionTextLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
             questionTextLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
             
-            cardBoxViewA.topAnchor.constraint(equalTo: questionTextLabel.bottomAnchor, constant: 30),
-            cardBoxViewA.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
-            cardBoxViewA.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5),
-            cardBoxViewA.heightAnchor.constraint(equalTo: optionTextBoxA.heightAnchor, constant: 30),
+            optionsTableView.topAnchor.constraint(equalTo: questionTextLabel.topAnchor, constant: 40),
+            optionsTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
+            optionsTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+            optionsTableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -100),
             
-            cardBoxViewB.topAnchor.constraint(equalTo: cardBoxViewA.bottomAnchor, constant: 20),
-            cardBoxViewB.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
-            cardBoxViewB.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5),
-            cardBoxViewB.heightAnchor.constraint(equalTo: optionTextBoxB.heightAnchor, constant: 30),
-            
-            cardBoxViewC.topAnchor.constraint(equalTo: cardBoxViewB.bottomAnchor, constant: 20),
-            cardBoxViewC.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
-            cardBoxViewC.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5),
-            cardBoxViewC.heightAnchor.constraint(equalTo: optionTextBoxC.heightAnchor, constant: 30),
-            
-            cardBoxViewD.topAnchor.constraint(equalTo: cardBoxViewC.bottomAnchor, constant: 20),
-            cardBoxViewD.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
-            cardBoxViewD.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5),
-            cardBoxViewD.heightAnchor.constraint(equalTo: optionTextBoxD.heightAnchor, constant: 30),
-            
-            optionTextBoxA.topAnchor.constraint(equalTo: cardBoxViewA.topAnchor, constant: 10),
-            optionTextBoxA.leadingAnchor.constraint(equalTo: cardBoxViewA.leadingAnchor, constant: 10),
-            
-            optionTextBoxB.topAnchor.constraint(equalTo: cardBoxViewB.topAnchor, constant: 10),
-            optionTextBoxB.leadingAnchor.constraint(equalTo: cardBoxViewB.leadingAnchor, constant: 10),
-            
-            optionTextBoxC.topAnchor.constraint(equalTo: cardBoxViewC.topAnchor, constant: 10),
-            optionTextBoxC.leadingAnchor.constraint(equalTo: cardBoxViewC.leadingAnchor, constant: 10),
-            
-            optionTextBoxD.topAnchor.constraint(equalTo: cardBoxViewD.topAnchor, constant: 10),
-            optionTextBoxD.leadingAnchor.constraint(equalTo: cardBoxViewD.leadingAnchor, constant: 10),
-            
-            nextButton.topAnchor.constraint(equalTo: cardBoxViewD.bottomAnchor, constant: 50),
+            nextButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 10),
             nextButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5),
             nextButton.widthAnchor.constraint(equalToConstant: 150),
             nextButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            prevButton.topAnchor.constraint(equalTo: cardBoxViewD.bottomAnchor, constant: 50),
+
+            prevButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 10),
             prevButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
             prevButton.widthAnchor.constraint(equalToConstant: 150),
             prevButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+}
+
+extension QuizzViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return questions?[questionIndex].opciones.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: OptionCell.reuseId, for: indexPath) as! OptionCell
+        cell.option = questions?[questionIndex].opciones[indexPath.row]
+        return cell
+    }
+}
+
+extension QuizzViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Selected item \(indexPath.row)")
     }
 }
