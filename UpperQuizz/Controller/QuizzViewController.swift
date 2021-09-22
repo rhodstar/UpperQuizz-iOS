@@ -13,9 +13,7 @@ final class QuizzViewController: UIViewController {
     private weak var containerView: UIView?
     private weak var subjectLabel: UILabel?
     private weak var questionTextLabel: UILabel?
-    
     private weak var optionsTableView: UITableView?
-    
     private weak var nextButton: UIButton?
     private weak var prevButton: UIButton?
     
@@ -23,6 +21,11 @@ final class QuizzViewController: UIViewController {
     var questionIndex: Int = 0 {
         didSet {
             updateNavButtons()
+        }
+    }
+    var answers: [Int?]? {
+        didSet {
+            updateNextButton()
         }
     }
 
@@ -84,6 +87,10 @@ final class QuizzViewController: UIViewController {
         ]
         
         self.questions = questions
+        // Initializiting array of answers
+        // This array will help us count wrong and good answers
+        // And redraw previous answered questions.
+        self.answers = Array(repeating: nil, count: questions.count)
     }
     
     func configureQuestion(index: Int) {
@@ -96,9 +103,14 @@ final class QuizzViewController: UIViewController {
     @objc func handleNextQuestion() {
         guard let questions = questions else { return }
         if questionIndex < questions.count - 1 {
-            questionIndex += 1
-            configureQuestion(index: questionIndex)
-            optionsTableView?.reloadData()
+            if answers?[questionIndex] != nil {
+                questionIndex += 1
+                configureQuestion(index: questionIndex)
+                optionsTableView?.reloadData()
+                nextButton?.backgroundColor = .gray
+            } else {
+                print("No se ha seleccionado, ninguna opcion")
+            }
         }
     }
     
@@ -117,13 +129,32 @@ final class QuizzViewController: UIViewController {
         } else {
             prevButton?.backgroundColor = Constants.primaryColor
         }
+        
         guard let questions = questions else { return }
         if questionIndex == (questions.count - 1) {
-            nextButton?.backgroundColor = .gray
+            nextButton?.setTitle("Terminar", for: .normal)
         } else {
             nextButton?.backgroundColor = Constants.primaryColor
+            nextButton?.setTitle("Siguiente", for: .normal)
         }
     }
+    
+    func updateNextButton() {
+        if answers?[questionIndex] != nil {
+            guard let questions = questions else { return }
+            if questionIndex == (questions.count - 1) {
+                nextButton?.backgroundColor = .red
+                nextButton?.setTitle("Terminar", for: .normal)
+            } else {
+                nextButton?.backgroundColor = Constants.primaryColor
+                nextButton?.setTitle("Siguiente", for: .normal)
+            }
+            
+        } else {
+            nextButton?.backgroundColor = .gray
+        }
+    }
+    
     func configureViewController() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.title = "Pregunta ##"
@@ -148,6 +179,7 @@ final class QuizzViewController: UIViewController {
         let subjectLabel = UILabel()
         subjectLabel.text = "Materia ..."
         subjectLabel.textColor = .gray
+        subjectLabel.font = UIFont.systemFont(ofSize: 20)
         subjectLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(subjectLabel)
         self.subjectLabel = subjectLabel
@@ -226,6 +258,6 @@ extension QuizzViewController: UITableViewDataSource {
 
 extension QuizzViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Selected item \(indexPath.row)")
+        answers?[questionIndex] = questions?[questionIndex].opciones[indexPath.row].opcion_id
     }
 }
