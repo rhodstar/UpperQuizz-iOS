@@ -25,48 +25,42 @@ final class QuizzViewController: UIViewController {
             updateNavButtons()
         }
     }
+    
     var answers: [Int?]? {
         didSet {
             updateNextButton()
         }
     }
-    var totalPoints: Int = 0
-    var pointsBySubject: [Int]?
 
     //MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViewController()
-        configureContainterUI()
         configureUI()
         loadQuestions()
-        configureQuestion(index: 0)
         viewModel = QuizzViewModel(questions: self.questions)
     }
     
     //MARK:- Helpers
-    
     func configureQuestion(index: Int) {
         let currentQuestion = questions?[index]
         self.title = "Pregunta \(index + 1)"
         subjectLabel?.text = currentQuestion?.materia
         questionTextLabel?.text = currentQuestion?.texto_pregunta
+        optionsTableView?.reloadData()
     }
     
     @objc func handleNextQuestion() {
         guard let questions = questions else { return }
         //Saving the answers
         //Grading
-        totalPoints += viewModel?.gradeQuestion(index: questionIndex, answers: answers, bySubject: &pointsBySubject) ?? 0
-        print("Total points: \(totalPoints)")
-        print("Points by subject: \(pointsBySubject ?? [])")
+        viewModel?.gradeQuestion(index: questionIndex, answers: answers)
+        print("Total points: \(viewModel?.totalPoints ?? 0)")
+        print("Points by subject: \(viewModel?.pointsBySubject ?? [])")
         
-        if questionIndex < questions.count - 1 &&
-         answers?[questionIndex] != nil { // nil equal none op selected
+        if questionIndex < questions.count - 1 && answers?[questionIndex] != nil { // nil = NO option selected
             questionIndex += 1
             configureQuestion(index: questionIndex)
             nextButton?.backgroundColor = .gray
-            optionsTableView?.reloadData()
         } else {
             print("No se ha seleccionado, ninguna opcion")
         }
@@ -76,7 +70,6 @@ final class QuizzViewController: UIViewController {
         if questionIndex != 0 {
             questionIndex -= 1
             configureQuestion(index: questionIndex)
-            optionsTableView?.reloadData()
         }
     }
     
@@ -127,18 +120,11 @@ extension QuizzViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: OptionCell.reuseId, for: indexPath) as! OptionCell
-        cell.option = questions?[questionIndex].opciones[indexPath.row]
+        let option = questions?[questionIndex].opciones[indexPath.row]
+        cell.option = option
         
-        let currentOptionId = cell.option?.opcion_id
-        if answers?[questionIndex] != nil {
-            if answers?[questionIndex] == currentOptionId {
-                cell.wasSelected = true
-            } else {
-                cell.wasSelected = false
-            }
-        } else {
-            cell.wasSelected = false
-        }
+        cell.wasSelected = viewModel?.setWasSelectedFlag(index: questionIndex, answers: answers, optionId: option?.opcion_id)
+        
         return cell
     }
 }
@@ -167,6 +153,8 @@ extension QuizzViewController {
     }
 
     func configureUI() {
+        configureViewController()
+        configureContainterUI()
         view.backgroundColor = .clear
         guard let containerView = containerView else { return }
         let subjectLabel = UILabel()
@@ -290,7 +278,7 @@ extension QuizzViewController {
         // This array will help us count wrong and good answers
         // And redraw previous answered questions.
         self.answers = Array(repeating: nil, count: questions.count)
-        // 10 = num of subjects in the DB
-        self.pointsBySubject = Array(repeating: 0, count: 10)
+        
+        configureQuestion(index: 0)
     }
 }
