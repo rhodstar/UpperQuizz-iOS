@@ -17,6 +17,8 @@ final class QuizzViewController: UIViewController {
     private weak var nextButton: UIButton?
     private weak var prevButton: UIButton?
     
+    private var viewModel: QuizzViewModel?
+    
     var questions: [Question]?
     var questionIndex: Int = 0 {
         didSet {
@@ -28,6 +30,8 @@ final class QuizzViewController: UIViewController {
             updateNextButton()
         }
     }
+    var totalPoints: Int = 0
+    var pointsBySubject: [Int]?
 
     //MARK:- Lifecycle
     override func viewDidLoad() {
@@ -37,61 +41,10 @@ final class QuizzViewController: UIViewController {
         configureUI()
         loadQuestions()
         configureQuestion(index: 0)
+        viewModel = QuizzViewModel(questions: self.questions)
     }
     
     //MARK:- Helpers
-    func loadQuestions() {
-        let optionsQ1 = [
-            Option(opcion_id: 1, texto_opcion: "Bien"),
-            Option(opcion_id: 2, texto_opcion: "Mal"),
-            Option(opcion_id: 3, texto_opcion: "Regular"),
-            Option(opcion_id: 4, texto_opcion: "No me quejo"),
-        ]
-        let optionsQ2 = [
-            Option(opcion_id: 5, texto_opcion: "5"),
-            Option(opcion_id: 6, texto_opcion: "7"),
-            Option(opcion_id: 7, texto_opcion: "9"),
-            Option(opcion_id: 8, texto_opcion: "12"),
-        ]
-        let optionsQ3 = [
-            Option(opcion_id: 9, texto_opcion: "5"),
-            Option(opcion_id: 10, texto_opcion: "-2"),
-            Option(opcion_id: 11, texto_opcion: "9"),
-            Option(opcion_id: 12, texto_opcion: "1"),
-        ]
-        let optionsQ4 = [
-            Option(opcion_id: 13, texto_opcion: "9"),
-            Option(opcion_id: 14, texto_opcion: "11"),
-            Option(opcion_id: 15, texto_opcion: "-9"),
-            Option(opcion_id: 16, texto_opcion: "2"),
-        ]
-        let optionsQ5 = [
-            Option(opcion_id: 17, texto_opcion: "-6"),
-            Option(opcion_id: 18, texto_opcion: "6"),
-            Option(opcion_id: 19, texto_opcion: "9"),
-            Option(opcion_id: 20, texto_opcion: "3"),
-        ]
-        let optionsQ6 = [
-            Option(opcion_id: 21, texto_opcion: "7"),
-            Option(opcion_id: 22, texto_opcion: "17"),
-            Option(opcion_id: 23, texto_opcion: "27"),
-            Option(opcion_id: 24, texto_opcion: "5"),
-        ]
-        let questions = [
-            Question(texto_pregunta: "¿Cómo estas?", opcion_correcta_id: 2, pregunta_id: 1, materia: "Matemáticas", opciones: optionsQ1),
-            Question(texto_pregunta: "4+3", opcion_correcta_id: 6, pregunta_id: 2, materia:"Matemáticas", opciones: optionsQ2),
-            Question(texto_pregunta: "7-2", opcion_correcta_id: 9, pregunta_id: 3, materia:"Matemáticas", opciones: optionsQ3),
-            Question(texto_pregunta: "11-20", opcion_correcta_id: 15, pregunta_id: 4, materia:"Matemáticas", opciones: optionsQ4),
-            Question(texto_pregunta: "3+3", opcion_correcta_id: 18, pregunta_id: 5, materia:"Matemáticas", opciones: optionsQ5),
-            Question(texto_pregunta: "4+3", opcion_correcta_id: 21, pregunta_id: 6, materia:"Español", opciones: optionsQ6),
-        ]
-        
-        self.questions = questions
-        // Initializiting array of answers
-        // This array will help us count wrong and good answers
-        // And redraw previous answered questions.
-        self.answers = Array(repeating: nil, count: questions.count)
-    }
     
     func configureQuestion(index: Int) {
         let currentQuestion = questions?[index]
@@ -102,15 +55,20 @@ final class QuizzViewController: UIViewController {
     
     @objc func handleNextQuestion() {
         guard let questions = questions else { return }
-        if questionIndex < questions.count - 1 {
-            if answers?[questionIndex] != nil {
-                questionIndex += 1
-                configureQuestion(index: questionIndex)
-                nextButton?.backgroundColor = .gray
-                optionsTableView?.reloadData()
-            } else {
-                print("No se ha seleccionado, ninguna opcion")
-            }
+        //Saving the answers
+        //Grading
+        totalPoints += viewModel?.gradeQuestion(index: questionIndex, answers: answers, bySubject: &pointsBySubject) ?? 0
+        print("Total points: \(totalPoints)")
+        print("Points by subject: \(pointsBySubject ?? [])")
+        
+        if questionIndex < questions.count - 1 &&
+         answers?[questionIndex] != nil { // nil equal none op selected
+            questionIndex += 1
+            configureQuestion(index: questionIndex)
+            nextButton?.backgroundColor = .gray
+            optionsTableView?.reloadData()
+        } else {
+            print("No se ha seleccionado, ninguna opcion")
         }
     }
     
@@ -159,7 +117,42 @@ final class QuizzViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.title = "Pregunta ##"
     }
+}
+
+// MARK:- TableView Data Source
+extension QuizzViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return questions?[questionIndex].opciones.count ?? 0
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: OptionCell.reuseId, for: indexPath) as! OptionCell
+        cell.option = questions?[questionIndex].opciones[indexPath.row]
+        
+        let currentOptionId = cell.option?.opcion_id
+        if answers?[questionIndex] != nil {
+            if answers?[questionIndex] == currentOptionId {
+                cell.wasSelected = true
+            } else {
+                cell.wasSelected = false
+            }
+        } else {
+            cell.wasSelected = false
+        }
+        return cell
+    }
+}
+
+// MARK:- TableView Data source
+extension QuizzViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        answers?[questionIndex] = questions?[questionIndex].opciones[indexPath.row].opcion_id
+        tableView.reloadData()
+    }
+}
+
+// MARK:- Constraints UI configuration
+extension QuizzViewController {
     func configureContainterUI() {
         let containerView  = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -192,7 +185,7 @@ final class QuizzViewController: UIViewController {
         self.questionTextLabel = questionTextLabel
         
         let optionsTableView = UITableView()
-        optionsTableView.separatorStyle = .none	
+        optionsTableView.separatorStyle = .none
         optionsTableView.register(OptionCell.self, forCellReuseIdentifier: OptionCell.reuseId)
         optionsTableView.dataSource = self
         optionsTableView.delegate = self
@@ -244,33 +237,60 @@ final class QuizzViewController: UIViewController {
     }
 }
 
-extension QuizzViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return questions?[questionIndex].opciones.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: OptionCell.reuseId, for: indexPath) as! OptionCell
-        cell.option = questions?[questionIndex].opciones[indexPath.row]
+// MARK:- Temporal extension for fake Data
+extension QuizzViewController {
+    func loadQuestions() {
+        let optionsQ1 = [
+            Option(opcion_id: 1, texto_opcion: "Bien"),
+            Option(opcion_id: 2, texto_opcion: "Mal"),
+            Option(opcion_id: 3, texto_opcion: "Regular"),
+            Option(opcion_id: 4, texto_opcion: "No me quejo"),
+        ]
+        let optionsQ2 = [
+            Option(opcion_id: 5, texto_opcion: "5"),
+            Option(opcion_id: 6, texto_opcion: "7"),
+            Option(opcion_id: 7, texto_opcion: "9"),
+            Option(opcion_id: 8, texto_opcion: "12"),
+        ]
+        let optionsQ3 = [
+            Option(opcion_id: 9, texto_opcion: "5"),
+            Option(opcion_id: 10, texto_opcion: "-2"),
+            Option(opcion_id: 11, texto_opcion: "9"),
+            Option(opcion_id: 12, texto_opcion: "1"),
+        ]
+        let optionsQ4 = [
+            Option(opcion_id: 13, texto_opcion: "9"),
+            Option(opcion_id: 14, texto_opcion: "11"),
+            Option(opcion_id: 15, texto_opcion: "-9"),
+            Option(opcion_id: 16, texto_opcion: "2"),
+        ]
+        let optionsQ5 = [
+            Option(opcion_id: 17, texto_opcion: "-6"),
+            Option(opcion_id: 18, texto_opcion: "6"),
+            Option(opcion_id: 19, texto_opcion: "9"),
+            Option(opcion_id: 20, texto_opcion: "3"),
+        ]
+        let optionsQ6 = [
+            Option(opcion_id: 21, texto_opcion: "7"),
+            Option(opcion_id: 22, texto_opcion: "17"),
+            Option(opcion_id: 23, texto_opcion: "27"),
+            Option(opcion_id: 24, texto_opcion: "5"),
+        ]
+        let questions = [
+            Question(texto_pregunta: "¿Cómo estas?", opcion_correcta_id: 2, pregunta_id: 1, materia: "Matemáticas", materia_id: 1, opciones: optionsQ1),
+            Question(texto_pregunta: "4+3", opcion_correcta_id: 6, pregunta_id: 2, materia:"Matemáticas", materia_id: 1, opciones: optionsQ2),
+            Question(texto_pregunta: "7-2", opcion_correcta_id: 9, pregunta_id: 3, materia:"Matemáticas", materia_id: 1, opciones: optionsQ3),
+            Question(texto_pregunta: "11-20", opcion_correcta_id: 15, pregunta_id: 4, materia:"Matemáticas", materia_id: 1, opciones: optionsQ4),
+            Question(texto_pregunta: "3+3", opcion_correcta_id: 18, pregunta_id: 5, materia:"Matemáticas", materia_id: 1, opciones: optionsQ5),
+            Question(texto_pregunta: "4+3", opcion_correcta_id: 21, pregunta_id: 6, materia:"Español", materia_id: 1, opciones: optionsQ6),
+        ]
         
-        print("Cell was called \(indexPath.row)")
-        let currentOptionId = cell.option?.opcion_id
-        if answers?[questionIndex] != nil {
-            if answers?[questionIndex] == currentOptionId {
-                cell.wasSelected = true
-            } else {
-                cell.wasSelected = false
-            }
-        } else {
-            cell.wasSelected = false
-        }
-        return cell
-    }
-}
-
-extension QuizzViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        answers?[questionIndex] = questions?[questionIndex].opciones[indexPath.row].opcion_id
-        tableView.reloadData()
+        self.questions = questions
+        // Initializiting array of answers
+        // This array will help us count wrong and good answers
+        // And redraw previous answered questions.
+        self.answers = Array(repeating: nil, count: questions.count)
+        // 10 = num of subjects in the DB
+        self.pointsBySubject = Array(repeating: 0, count: 10)
     }
 }
