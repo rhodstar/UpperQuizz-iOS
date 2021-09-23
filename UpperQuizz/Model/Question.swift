@@ -12,6 +12,6 @@ struct  Question {
     let opcion_correcta_id: Int
     let pregunta_id: Int
     let materia: String
-    let materia_id: Int? = nil
+    let materia_id: Int
     let opciones: [Option]
 }
