@@ -33,4 +33,34 @@ struct QuizzViewModel {
         }
         return wasSelected
     }
+    
+    func prevButtonBackground(index: Int) -> UIColor {
+        if index == 0 {
+            return .gray
+        }
+        return Constants.primaryColor
+    }
+    
+    func nextButTitle(index: Int) -> String {
+        var title = "Siguiente"
+        guard let questions = questions else { return ""}
+        if index == (questions.count - 1) {
+            title = "Terminar"
+        }        
+        return title
+    }
+    
+    func nextButColor(index: Int, answers: [Int?]?) -> UIColor {
+        guard let questions = questions else { return Constants.primaryColor }
+        if answers?[index] != nil {
+            if index == ( questions.count - 1) {
+                return .red
+            } else {
+                return Constants.primaryColor
+            }
+        }
+        
+        return .gray
+        
+    }
 }

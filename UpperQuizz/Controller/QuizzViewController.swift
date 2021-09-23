@@ -51,11 +51,11 @@ final class QuizzViewController: UIViewController {
     
     @objc func handleNextQuestion() {
         guard let questions = questions else { return }
-        //Saving the answers
+        //Saving the answers to API
         //Grading
         viewModel?.gradeQuestion(index: questionIndex, answers: answers)
-        print("Total points: \(viewModel?.totalPoints ?? 0)")
-        print("Points by subject: \(viewModel?.pointsBySubject ?? [])")
+//        print("Total points: \(viewModel?.totalPoints ?? 0)")
+//        print("Points by subject: \(viewModel?.pointsBySubject ?? [])")
         
         if questionIndex < questions.count - 1 && answers?[questionIndex] != nil { // nil = NO option selected
             questionIndex += 1
@@ -75,35 +75,16 @@ final class QuizzViewController: UIViewController {
     
     //MARK:- UI Helpers
     func updateNavButtons() {
-        if questionIndex == 0 {
-            prevButton?.backgroundColor = .gray
-        } else {
-            prevButton?.backgroundColor = Constants.primaryColor
-        }
+        prevButton?.backgroundColor = viewModel?.prevButtonBackground(index: questionIndex)
         
-        guard let questions = questions else { return }
-        if questionIndex == (questions.count - 1) {
-            nextButton?.setTitle("Terminar", for: .normal)
-        } else {
-            nextButton?.backgroundColor = Constants.primaryColor
-            nextButton?.setTitle("Siguiente", for: .normal)
-        }
+        let title = viewModel?.nextButTitle(index: questionIndex)
+        nextButton?.setTitle(title, for: .normal)
     }
     
     func updateNextButton() {
-        if answers?[questionIndex] != nil {
-            guard let questions = questions else { return }
-            if questionIndex == (questions.count - 1) {
-                nextButton?.backgroundColor = .red
-                nextButton?.setTitle("Terminar", for: .normal)
-            } else {
-                nextButton?.backgroundColor = Constants.primaryColor
-                nextButton?.setTitle("Siguiente", for: .normal)
-            }
-            
-        } else {
-            nextButton?.backgroundColor = .gray
-        }
+        let title = viewModel?.nextButTitle(index: questionIndex)
+        nextButton?.setTitle(title, for: .normal)
+        nextButton?.backgroundColor = viewModel?.nextButColor(index: questionIndex, answers: answers)
     }
     
     func configureViewController() {
