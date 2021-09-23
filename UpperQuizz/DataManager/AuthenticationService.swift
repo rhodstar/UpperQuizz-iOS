@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 
 final class AuthenticationService {
-    static let sharedInstance = AuthenticationService()
+    static let shared = AuthenticationService()
     typealias K = Constants
     typealias RegisterCompletion = (String) -> Void
     typealias AuthCompletion = (Result<User?, AuthError>) -> Void

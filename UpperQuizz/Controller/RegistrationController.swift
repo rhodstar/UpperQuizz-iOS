@@ -15,12 +15,13 @@ final class RegistrationController: UIViewController {
     private weak var passwordTextField: UITextField?
     private weak var signUpButton: UIButton?
     private weak var loginButtonNavigation: UIButton?
-    weak var delegate: AuthenticationDelegate?
+    private var viewModel = RegistrationViewModel()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        configureNotificationObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,9 +45,24 @@ final class RegistrationController: UIViewController {
         
         let credentials = RegisterCredentials(nombre: username, apellidos: lastname, correo: email, contrasena: password)
         
-        AuthenticationService.sharedInstance.registerUser(with: credentials) { message in
+        AuthenticationService.shared.registerUser(with: credentials) { message in
             print(message)
         }
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func textDidChange(sender: UITextField) {
+        if sender == emailTextField {
+            viewModel.email = sender.text
+        } else if(sender == passwordTextField) {
+            viewModel.password = sender.text
+        } else if(sender == usernameTextField) {
+            viewModel.username = sender.text
+        } else {
+            viewModel.lastname = sender.text
+        }
+        
+        self.updateForm()
     }
     
     // MARK: - Helper functions
@@ -67,11 +83,11 @@ final class RegistrationController: UIViewController {
         let signUpButton = UIButton()
         signUpButton.setTitle("Regístrate", for: .normal)
         signUpButton.setTitleColor(.white, for: .normal)
-        signUpButton.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1).withAlphaComponent(0.5)
+        signUpButton.backgroundColor = #colorLiteral(red: 0.3501588404, green: 0.4323381186, blue: 0.6990520358, alpha: 1).withAlphaComponent(0.5)
         signUpButton.layer.cornerRadius = 5
         signUpButton.setHeight(50)
         signUpButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        //signUpButton.isEnabled = false
+        signUpButton.isEnabled = false
         signUpButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         self.signUpButton = signUpButton
         
@@ -92,5 +108,25 @@ final class RegistrationController: UIViewController {
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
+    }
+    
+    func configureNotificationObservers() {
+        guard let emailTextField = emailTextField, let passwordTextField = passwordTextField, let usernameTextField = usernameTextField, let lastnameTextField = lastnameTextField else {
+            return
+        }
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        usernameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        lastnameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
+}
+
+// MARK: - FormViewModel
+extension RegistrationController: FormViewModel {
+    func updateForm() {
+        guard let signUpButton = signUpButton else { return }
+        signUpButton.backgroundColor = viewModel.buttonBackgroundColor
+        signUpButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+        signUpButton.isEnabled = viewModel.formIsValid
     }
 }

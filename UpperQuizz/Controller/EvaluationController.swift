@@ -17,8 +17,8 @@ final class EvaluationController: UITableViewController {
         super.viewDidLoad()
         configureViewController()
         configureTableView()
-        evaluations = LocalDataManager.getData(of: [Evaluation].self, from: "evaluaciones")
-        print(evaluations)
+        fetchEvaluations()
+        //evaluations = LocalDataManager.getData(of: [Evaluation].self, from: "evaluaciones")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,9 +26,22 @@ final class EvaluationController: UITableViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    // MARK: - Network
+    private func fetchEvaluations() {
+        EvaluationService.shared.getEvaluations { result in
+            switch result {
+            case .success(let evaluations):
+                self.evaluations = evaluations
+                self.tableView.reloadData()
+            case .failure(let error):
+                debugPrint(error.localizedDescription)
+            }
+        }
+    }
+    
     // MARK: - Actions
     @objc func handleLogout() {
-        AuthenticationService.sharedInstance.logUserOut(viewController: self)
+        AuthenticationService.shared.logUserOut(viewController: self)
     }
     
     // MARK: - Helpers

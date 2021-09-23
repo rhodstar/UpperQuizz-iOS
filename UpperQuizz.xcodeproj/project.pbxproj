@@ -18,6 +18,7 @@
 		8812C49E26ED659800672C55 /* UQTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8812C49D26ED659800672C55 /* UQTextField.swift */; };
 		8812C4A026ED692F00672C55 /* UIButton+AttributedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8812C49F26ED692F00672C55 /* UIButton+AttributedText.swift */; };
 		881AE2EB26E08A4800304B24 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881AE2EA26E08A4800304B24 /* CircularProgressBarView.swift */; };
+		8833E73826FC5AD900FB1960 /* EvaluationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8833E73726FC5AD900FB1960 /* EvaluationService.swift */; };
 		88348DD626CB70DA0064CFC8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88348DD526CB70DA0064CFC8 /* Constants.swift */; };
 		88348DD926CB74490064CFC8 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88348DD826CB74490064CFC8 /* UIViewExtension.swift */; };
 		88348DDB26CB9F3B0064CFC8 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88348DDA26CB9F3B0064CFC8 /* UIColorExtension.swift */; };
@@ -28,6 +29,7 @@
 		8887338826F1B97D00EAB24D /* AuthCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8887338726F1B97D00EAB24D /* AuthCredentials.swift */; };
 		8887338A26F1D01500EAB24D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8887338926F1D01500EAB24D /* User.swift */; };
 		8887338C26F3206500EAB24D /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8887338B26F3206500EAB24D /* UserService.swift */; };
+		888D93B526F7E3320006568D /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888D93B426F7E3320006568D /* AuthenticationViewModel.swift */; };
 		88B6B0B926DC652F0091E099 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B6B0B826DC652F0091E099 /* Alamofire.xcframework */; };
 		88B6B0BA26DC652F0091E099 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 88B6B0B826DC652F0091E099 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		88BC912326A6966A003CACE6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC912226A6966A003CACE6 /* MainTabBarController.swift */; };
@@ -70,6 +72,7 @@
 		8812C49D26ED659800672C55 /* UQTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UQTextField.swift; sourceTree = "<group>"; };
 		8812C49F26ED692F00672C55 /* UIButton+AttributedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+AttributedText.swift"; sourceTree = "<group>"; };
 		881AE2EA26E08A4800304B24 /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
+		8833E73726FC5AD900FB1960 /* EvaluationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationService.swift; sourceTree = "<group>"; };
 		88348DD526CB70DA0064CFC8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		88348DD826CB74490064CFC8 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		88348DDA26CB9F3B0064CFC8 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -82,6 +85,7 @@
 		8887338726F1B97D00EAB24D /* AuthCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCredentials.swift; sourceTree = "<group>"; };
 		8887338926F1D01500EAB24D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8887338B26F3206500EAB24D /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		888D93B426F7E3320006568D /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthenticationViewModel.swift; path = ../../../../../../Downloads/AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		88B6B0B826DC652F0091E099 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
 		88BC912226A6966A003CACE6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		88BC912426A698AD003CACE6 /* RemindersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersController.swift; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 			children = (
 				66BBA88C26B264F300D26B99 /* LogicaModelosVista.swift */,
 				88D8DB6726EC3C210047C977 /* EvaluationViewModel.swift */,
+				888D93B426F7E3320006568D /* AuthenticationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -259,6 +264,7 @@
 				88FC8DBF26AD1F4200451447 /* LocalDataManager.swift */,
 				8887338326F1B68900EAB24D /* AuthenticationService.swift */,
 				8887338B26F3206500EAB24D /* UserService.swift */,
+				8833E73726FC5AD900FB1960 /* EvaluationService.swift */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -358,6 +364,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				888D93B526F7E3320006568D /* AuthenticationViewModel.swift in Sources */,
 				8812C49A26ED638B00672C55 /* LoginController.swift in Sources */,
 				8887338426F1B68900EAB24D /* AuthenticationService.swift in Sources */,
 				CF0AF73926E31DDD00321EEC /* Reminder.swift in Sources */,
@@ -374,6 +381,7 @@
 				66BBA88D26B264F300D26B99 /* LogicaModelosVista.swift in Sources */,
 				88348DDB26CB9F3B0064CFC8 /* UIColorExtension.swift in Sources */,
 				88348DD926CB74490064CFC8 /* UIViewExtension.swift in Sources */,
+				8833E73826FC5AD900FB1960 /* EvaluationService.swift in Sources */,
 				88BC912326A6966A003CACE6 /* MainTabBarController.swift in Sources */,
 				887E8ADA26A6923D00D62859 /* SceneDelegate.swift in Sources */,
 				8812C4A026ED692F00672C55 /* UIButton+AttributedText.swift in Sources */,
