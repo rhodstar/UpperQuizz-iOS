@@ -17,7 +17,7 @@ final class OptionCell: UITableViewCell {
             updateOptionText()
         }
     }
-    public var wasSelected: Bool?
+    public var wasSelected: Bool? = false
     
     private weak var containerView: UIView?
     private weak var optionText: UILabel?
@@ -36,27 +36,25 @@ final class OptionCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         guard let containerView = containerView else { return }
-        if selected {
+        guard let wasSelected = wasSelected else { return }
+        
+        if selected || wasSelected {
             containerView.backgroundColor = Constants.primaryColor
             optionText?.textColor = .white
         } else {
             containerView.backgroundColor = .white
             optionText?.textColor = .black
         }
-        print("Executed function setSelected")
         
-        guard let wasSelected = wasSelected else { return }
-        if wasSelected {
-            containerView.backgroundColor = Constants.primaryColor
-            optionText?.textColor = .white
-            print("DEBUG: Making container blue")
-        }
     }
     
     // MARK: - Helpers
     func updateOptionText() {
         guard let optionText = optionText, let option = option else { return }
         optionText.text = option.texto_opcion
+        guard let containerView  = containerView else { return }
+        containerView.backgroundColor = .white
+        optionText.textColor = .black
     }
     
     func configureCellLayout() { 

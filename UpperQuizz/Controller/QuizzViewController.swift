@@ -261,6 +261,8 @@ extension QuizzViewController: UITableViewDataSource {
             } else {
                 cell.wasSelected = false
             }
+        } else {
+            cell.wasSelected = false
         }
         return cell
     }
