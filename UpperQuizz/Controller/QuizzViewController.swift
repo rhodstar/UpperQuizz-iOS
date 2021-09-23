@@ -106,8 +106,8 @@ final class QuizzViewController: UIViewController {
             if answers?[questionIndex] != nil {
                 questionIndex += 1
                 configureQuestion(index: questionIndex)
-                optionsTableView?.reloadData()
                 nextButton?.backgroundColor = .gray
+                optionsTableView?.reloadData()
             } else {
                 print("No se ha seleccionado, ninguna opcion")
             }
@@ -252,6 +252,16 @@ extension QuizzViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: OptionCell.reuseId, for: indexPath) as! OptionCell
         cell.option = questions?[questionIndex].opciones[indexPath.row]
+        
+        print("Cell was called \(indexPath.row)")
+        let currentOptionId = cell.option?.opcion_id
+        if answers?[questionIndex] != nil {
+            if answers?[questionIndex] == currentOptionId {
+                cell.wasSelected = true
+            } else {
+                cell.wasSelected = false
+            }
+        }
         return cell
     }
 }
@@ -259,5 +269,6 @@ extension QuizzViewController: UITableViewDataSource {
 extension QuizzViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         answers?[questionIndex] = questions?[questionIndex].opciones[indexPath.row].opcion_id
+        tableView.reloadData()
     }
 }

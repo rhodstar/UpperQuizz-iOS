@@ -17,6 +17,8 @@ final class OptionCell: UITableViewCell {
             updateOptionText()
         }
     }
+    public var wasSelected: Bool?
+    
     private weak var containerView: UIView?
     private weak var optionText: UILabel?
     
@@ -40,6 +42,14 @@ final class OptionCell: UITableViewCell {
         } else {
             containerView.backgroundColor = .white
             optionText?.textColor = .black
+        }
+        print("Executed function setSelected")
+        
+        guard let wasSelected = wasSelected else { return }
+        if wasSelected {
+            containerView.backgroundColor = Constants.primaryColor
+            optionText?.textColor = .white
+            print("DEBUG: Making container blue")
         }
     }
     
