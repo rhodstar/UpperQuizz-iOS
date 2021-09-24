@@ -17,9 +17,9 @@ struct QuizzViewModel {
         guard let answers = answers else { return }
         var index = 0
         for answer in answers {
-            if answer == questions[index].opcion_correcta_id {
+            if answer == questions[index].opcionCorrectaId {
                 totalPoints += 1
-                let materia_id = questions[index].materia_id
+                let materia_id = questions[index].materiaId
                 //TODO:- Maybe consider changing materia_id as the index
                 pointsBySubject?[materia_id - 1] += 1
                 index += 1

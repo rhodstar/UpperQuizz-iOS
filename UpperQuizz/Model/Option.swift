@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Option {
-    let opcion_id: Int
-    let texto_opcion: String
+struct Option: Codable {
+    let opcionId: Int
+    let textoOpcion: String
 }

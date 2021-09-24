@@ -7,11 +7,11 @@
 
 import UIKit
 
-struct  Question {
-    let texto_pregunta: String
-    let opcion_correcta_id: Int
-    let pregunta_id: Int
+struct  Question: Codable {
+    let textoPregunta: String
+    let opcionCorrectaId: Int
+    let preguntaId: Int
     let materia: String
-    let materia_id: Int
+    let materiaId: Int
     let opciones: [Option]
 }

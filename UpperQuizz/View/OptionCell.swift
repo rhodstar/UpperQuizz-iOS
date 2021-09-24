@@ -51,7 +51,7 @@ final class OptionCell: UITableViewCell {
     // MARK: - Helpers
     func updateOptionText() {
         guard let optionText = optionText, let option = option else { return }
-        optionText.text = option.texto_opcion
+        optionText.text = option.textoOpcion
         guard let containerView  = containerView else { return }
         containerView.backgroundColor = .white
         optionText.textColor = .black

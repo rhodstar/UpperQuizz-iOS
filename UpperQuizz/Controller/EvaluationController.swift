@@ -80,6 +80,7 @@ extension EvaluationController {
         // TODO: Present questions for specific evaluation
         //print("DEBUG: Implement functionality here")
         let vc = QuizzViewController()
+        vc.evaluation = evaluations?[indexPath.row]
         self.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
         self.hidesBottomBarWhenPushed = false

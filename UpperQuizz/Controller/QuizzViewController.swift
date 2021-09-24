@@ -17,6 +17,7 @@ final class QuizzViewController: UIViewController {
     private weak var nextButton: UIButton?
     private weak var prevButton: UIButton?
     
+    public var evaluation: Evaluation?
     private var viewModel: QuizzViewModel?
     
     var questions: [Question]?
@@ -45,7 +46,7 @@ final class QuizzViewController: UIViewController {
         let currentQuestion = questions?[index]
         self.title = "Pregunta \(index + 1)"
         subjectLabel?.text = currentQuestion?.materia
-        questionTextLabel?.text = currentQuestion?.texto_pregunta
+        questionTextLabel?.text = currentQuestion?.textoPregunta
         optionsTableView?.reloadData()
     }
     
@@ -75,18 +76,14 @@ final class QuizzViewController: UIViewController {
         let totalPoints = viewModel?.totalPoints
         let pointsBySubject = viewModel?.pointsBySubject
         
-        let puntajesMateria = [
-            puntaje_materia(materia_id: 1, nombre_materia: "Matemáticas", puntaje: pointsBySubject?[0] ?? 0),
-            puntaje_materia(materia_id: 2, nombre_materia: "Español", puntaje: pointsBySubject?[1] ?? 0),
-            puntaje_materia(materia_id: 3, nombre_materia: "Física", puntaje: pointsBySubject?[2] ?? 0),
-            puntaje_materia(materia_id: 4, nombre_materia: "Química", puntaje: pointsBySubject?[3] ?? 0),
-            puntaje_materia(materia_id: 5, nombre_materia: "Biología", puntaje: pointsBySubject?[4] ?? 0),
-            puntaje_materia(materia_id: 6, nombre_materia: "Historia Universal", puntaje: pointsBySubject?[5] ?? 0),
-            puntaje_materia(materia_id: 7, nombre_materia: "Historia de México", puntaje: pointsBySubject?[6] ?? 0),
-            puntaje_materia(materia_id: 8, nombre_materia: "Literatura", puntaje: pointsBySubject?[7] ?? 0),
-            puntaje_materia(materia_id: 9, nombre_materia: "Geografía", puntaje: pointsBySubject?[8] ?? 0),
-            puntaje_materia(materia_id: 10, nombre_materia: "Filosofía", puntaje: pointsBySubject?[9] ?? 0),
-        ]
+        let subjects = [ "Matemáticas", "Español", "Física", "Química", "Biología", "Historia Universal", "Historia de México", "Literatura", "Geografía", "Filosofía"]
+        
+        var puntajesMateria: [puntaje_materia] = []
+        
+        for i in 0...(subjects.count+1) {
+            puntajesMateria.append(puntaje_materia(materia_id: i+1, nombre_materia: subjects[i], puntaje: pointsBySubject?[0] ?? 0))
+        }
+        
         let today = "\(Date())"
         let newExamenTerminado = examenTerminado(evaluacion_id: 1, aciertos_totales: totalPoints ?? 0, fecha_aplicacion: today, puntaje_materia: puntajesMateria)
         
@@ -127,7 +124,7 @@ extension QuizzViewController: UITableViewDataSource {
         let option = questions?[questionIndex].opciones[indexPath.row]
         cell.option = option
         
-        cell.wasSelected = viewModel?.setWasSelectedFlag(index: questionIndex, answers: answers, optionId: option?.opcion_id)
+        cell.wasSelected = viewModel?.setWasSelectedFlag(index: questionIndex, answers: answers, optionId: option?.opcionId)
         
         return cell
     }
@@ -136,7 +133,7 @@ extension QuizzViewController: UITableViewDataSource {
 // MARK:- TableView Data source
 extension QuizzViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        answers?[questionIndex] = questions?[questionIndex].opciones[indexPath.row].opcion_id
+        answers?[questionIndex] = questions?[questionIndex].opciones[indexPath.row].opcionId
         tableView.reloadData()
     }
 }
@@ -232,57 +229,24 @@ extension QuizzViewController {
 // MARK:- Temporal extension for fake Data
 extension QuizzViewController {
     func loadQuestions() {
-        let optionsQ1 = [
-            Option(opcion_id: 1, texto_opcion: "Bien"),
-            Option(opcion_id: 2, texto_opcion: "Mal"),
-            Option(opcion_id: 3, texto_opcion: "Regular"),
-            Option(opcion_id: 4, texto_opcion: "No me quejo"),
-        ]
-        let optionsQ2 = [
-            Option(opcion_id: 5, texto_opcion: "5"),
-            Option(opcion_id: 6, texto_opcion: "7"),
-            Option(opcion_id: 7, texto_opcion: "9"),
-            Option(opcion_id: 8, texto_opcion: "12"),
-        ]
-        let optionsQ3 = [
-            Option(opcion_id: 9, texto_opcion: "5"),
-            Option(opcion_id: 10, texto_opcion: "-2"),
-            Option(opcion_id: 11, texto_opcion: "9"),
-            Option(opcion_id: 12, texto_opcion: "1"),
-        ]
-        let optionsQ4 = [
-            Option(opcion_id: 13, texto_opcion: "9"),
-            Option(opcion_id: 14, texto_opcion: "11"),
-            Option(opcion_id: 15, texto_opcion: "-9"),
-            Option(opcion_id: 16, texto_opcion: "2"),
-        ]
-        let optionsQ5 = [
-            Option(opcion_id: 17, texto_opcion: "-6"),
-            Option(opcion_id: 18, texto_opcion: "6"),
-            Option(opcion_id: 19, texto_opcion: "9"),
-            Option(opcion_id: 20, texto_opcion: "3"),
-        ]
-        let optionsQ6 = [
-            Option(opcion_id: 21, texto_opcion: "7"),
-            Option(opcion_id: 22, texto_opcion: "17"),
-            Option(opcion_id: 23, texto_opcion: "27"),
-            Option(opcion_id: 24, texto_opcion: "5"),
-        ]
-        let questions = [
-            Question(texto_pregunta: "¿Cómo estas?", opcion_correcta_id: 2, pregunta_id: 1, materia: "Matemáticas", materia_id: 1, opciones: optionsQ1),
-            Question(texto_pregunta: "4+3", opcion_correcta_id: 6, pregunta_id: 2, materia:"Matemáticas", materia_id: 1, opciones: optionsQ2),
-            Question(texto_pregunta: "7-2", opcion_correcta_id: 9, pregunta_id: 3, materia:"Matemáticas", materia_id: 1, opciones: optionsQ3),
-            Question(texto_pregunta: "11-20", opcion_correcta_id: 15, pregunta_id: 4, materia:"Español", materia_id: 2, opciones: optionsQ4),
-            Question(texto_pregunta: "3+3", opcion_correcta_id: 18, pregunta_id: 5, materia:"Español", materia_id: 2, opciones: optionsQ5),
-            Question(texto_pregunta: "4+3", opcion_correcta_id: 21, pregunta_id: 6, materia:"Física", materia_id: 3, opciones: optionsQ6),
-        ]
-        
-        self.questions = questions
-        // Initializiting array of answers
-        // This array will help us count wrong and good answers
-        // And redraw previous answered questions.
-        self.answers = Array(repeating: nil, count: questions.count)
-        
-        configureQuestion(index: 0)
+        guard let evaluation = evaluation else { return }
+        QuizzService.sharedInstance.getEvaluation(evaluationID: evaluation.evaluacionId) { [weak self] result in
+            switch result {
+            case .success(let evaluation):
+                self?.questions = evaluation
+                //self.questions = questions
+                // Initializiting array of answers
+                // This array will help us count wrong and good answers
+                // And redraw previous answered questions.
+                self?.answers = Array(repeating: nil, count: (self?.questions!.count)!)
+                
+                DispatchQueue.main.async {
+                    self?.configureQuestion(index: 0)
+                }
+            case .failure(let error):
+                debugPrint(error.localizedDescription)
+            }
+        }
+
     }
 }
