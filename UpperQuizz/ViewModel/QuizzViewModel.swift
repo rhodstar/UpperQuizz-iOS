@@ -12,14 +12,20 @@ struct QuizzViewModel {
     public var totalPoints: Int = 0
     public var pointsBySubject: [Int]? = Array(repeating: 0, count: 10) // 10 = num of subjects in the DB
     
-    mutating func gradeQuestion(index: Int, answers: [Int?]?) {
+    mutating func gradeExam(answers: [Int?]?) {
         guard let questions = questions else { return }
-        if answers?[index] == questions[index].opcion_correcta_id {
-            totalPoints += 1
-            let materia_id = questions[index].materia_id
-            //TODO:- Maybe consider changing materia_id as the index
-            pointsBySubject?[materia_id - 1] += 1
+        guard let answers = answers else { return }
+        var index = 0
+        for answer in answers {
+            if answer == questions[index].opcion_correcta_id {
+                totalPoints += 1
+                let materia_id = questions[index].materia_id
+                //TODO:- Maybe consider changing materia_id as the index
+                pointsBySubject?[materia_id - 1] += 1
+                index += 1
+            }
         }
+
     }
     
     func setWasSelectedFlag(index: Int, answers: [Int?]?, optionId: Int?) -> Bool {

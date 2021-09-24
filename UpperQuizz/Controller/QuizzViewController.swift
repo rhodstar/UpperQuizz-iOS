@@ -51,18 +51,15 @@ final class QuizzViewController: UIViewController {
     
     @objc func handleNextQuestion() {
         guard let questions = questions else { return }
-        //Saving the answers to API
-        //Grading
-        viewModel?.gradeQuestion(index: questionIndex, answers: answers)
-//        print("Total points: \(viewModel?.totalPoints ?? 0)")
-//        print("Points by subject: \(viewModel?.pointsBySubject ?? [])")
-        
-        if questionIndex < questions.count - 1 && answers?[questionIndex] != nil { // nil = NO option selected
-            questionIndex += 1
-            configureQuestion(index: questionIndex)
-            nextButtonColors()
+        if questionIndex < questions.count - 1 {
+            if answers?[questionIndex] != nil { // nil = NO option selected
+                questionIndex += 1
+                configureQuestion(index: questionIndex)
+                nextButtonColors()
+            } else { print("No se ha seleccionado, ninguna opcion") }
         } else {
-            print("No se ha seleccionado, ninguna opcion")
+            // User pressed Finished button
+            presentGrades()
         }
     }
     
@@ -71,6 +68,32 @@ final class QuizzViewController: UIViewController {
             questionIndex -= 1
             configureQuestion(index: questionIndex)
         }
+    }
+    
+    func presentGrades() {
+        viewModel?.gradeExam(answers: answers)
+        let totalPoints = viewModel?.totalPoints
+        let pointsBySubject = viewModel?.pointsBySubject
+        
+        let puntajesMateria = [
+            puntaje_materia(materia_id: 1, nombre_materia: "Matemáticas", puntaje: pointsBySubject?[0] ?? 0),
+            puntaje_materia(materia_id: 2, nombre_materia: "Español", puntaje: pointsBySubject?[1] ?? 0),
+            puntaje_materia(materia_id: 3, nombre_materia: "Física", puntaje: pointsBySubject?[2] ?? 0),
+            puntaje_materia(materia_id: 4, nombre_materia: "Química", puntaje: pointsBySubject?[3] ?? 0),
+            puntaje_materia(materia_id: 5, nombre_materia: "Biología", puntaje: pointsBySubject?[4] ?? 0),
+            puntaje_materia(materia_id: 6, nombre_materia: "Historia Universal", puntaje: pointsBySubject?[5] ?? 0),
+            puntaje_materia(materia_id: 7, nombre_materia: "Historia de México", puntaje: pointsBySubject?[6] ?? 0),
+            puntaje_materia(materia_id: 8, nombre_materia: "Literatura", puntaje: pointsBySubject?[7] ?? 0),
+            puntaje_materia(materia_id: 9, nombre_materia: "Geografía", puntaje: pointsBySubject?[8] ?? 0),
+            puntaje_materia(materia_id: 10, nombre_materia: "Filosofía", puntaje: pointsBySubject?[9] ?? 0),
+        ]
+        let today = "\(Date())"
+        let newExamenTerminado = examenTerminado(evaluacion_id: 1, aciertos_totales: totalPoints ?? 0, fecha_aplicacion: today, puntaje_materia: puntajesMateria)
+        
+        let detailVcc = DetailVC()
+        detailVcc.examenTerminado = newExamenTerminado
+        self.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(detailVcc, animated: true)
     }
     
     //MARK:- UI Helpers
@@ -249,9 +272,9 @@ extension QuizzViewController {
             Question(texto_pregunta: "¿Cómo estas?", opcion_correcta_id: 2, pregunta_id: 1, materia: "Matemáticas", materia_id: 1, opciones: optionsQ1),
             Question(texto_pregunta: "4+3", opcion_correcta_id: 6, pregunta_id: 2, materia:"Matemáticas", materia_id: 1, opciones: optionsQ2),
             Question(texto_pregunta: "7-2", opcion_correcta_id: 9, pregunta_id: 3, materia:"Matemáticas", materia_id: 1, opciones: optionsQ3),
-            Question(texto_pregunta: "11-20", opcion_correcta_id: 15, pregunta_id: 4, materia:"Matemáticas", materia_id: 1, opciones: optionsQ4),
-            Question(texto_pregunta: "3+3", opcion_correcta_id: 18, pregunta_id: 5, materia:"Matemáticas", materia_id: 1, opciones: optionsQ5),
-            Question(texto_pregunta: "4+3", opcion_correcta_id: 21, pregunta_id: 6, materia:"Español", materia_id: 1, opciones: optionsQ6),
+            Question(texto_pregunta: "11-20", opcion_correcta_id: 15, pregunta_id: 4, materia:"Español", materia_id: 2, opciones: optionsQ4),
+            Question(texto_pregunta: "3+3", opcion_correcta_id: 18, pregunta_id: 5, materia:"Español", materia_id: 2, opciones: optionsQ5),
+            Question(texto_pregunta: "4+3", opcion_correcta_id: 21, pregunta_id: 6, materia:"Física", materia_id: 3, opciones: optionsQ6),
         ]
         
         self.questions = questions
