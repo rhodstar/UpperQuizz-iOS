@@ -70,5 +70,6 @@ extension EvaluationController {
         let vc = QuizzViewController()
         self.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
+        self.hidesBottomBarWhenPushed = false
     }
 }
