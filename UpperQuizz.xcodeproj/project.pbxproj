@@ -38,11 +38,11 @@
 		8887338A26F1D01500EAB24D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8887338926F1D01500EAB24D /* User.swift */; };
 		8887338C26F3206500EAB24D /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8887338B26F3206500EAB24D /* UserService.swift */; };
 		888D93B526F7E3320006568D /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888D93B426F7E3320006568D /* AuthenticationViewModel.swift */; };
+		88A8C0CF26FD5595009F5B1E /* EvaluationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC912626A698BA003CACE6 /* EvaluationController.swift */; };
 		88B6B0B926DC652F0091E099 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B6B0B826DC652F0091E099 /* Alamofire.xcframework */; };
 		88B6B0BA26DC652F0091E099 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 88B6B0B826DC652F0091E099 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		88BC912326A6966A003CACE6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC912226A6966A003CACE6 /* MainTabBarController.swift */; };
 		88BC912526A698AD003CACE6 /* RemindersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC912426A698AD003CACE6 /* RemindersController.swift */; };
-		88BC912726A698BA003CACE6 /* EvaluationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC912626A698BA003CACE6 /* EvaluationController.swift */; };
 		88BC912926A698C5003CACE6 /* ProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC912826A698C5003CACE6 /* ProgressController.swift */; };
 		88CC5BC226B4C58A00E97021 /* Evaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CC5BC126B4C58A00E97021 /* Evaluation.swift */; };
 		88CC5BC426B4C81E00E97021 /* EvaluationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CC5BC326B4C81E00E97021 /* EvaluationCell.swift */; };
@@ -388,18 +388,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88A8C0CF26FD5595009F5B1E /* EvaluationController.swift in Sources */,
 				888D93B526F7E3320006568D /* AuthenticationViewModel.swift in Sources */,
 				8812C49A26ED638B00672C55 /* LoginController.swift in Sources */,
 				8887338426F1B68900EAB24D /* AuthenticationService.swift in Sources */,
 				CF0AF73926E31DDD00321EEC /* Reminder.swift in Sources */,
 				881AE2EB26E08A4800304B24 /* CircularProgressBarView.swift in Sources */,
 				88BC912526A698AD003CACE6 /* RemindersController.swift in Sources */,
-				88BC912726A698BA003CACE6 /* EvaluationController.swift in Sources */,
 				664C971526B64C5600A06F6B /* miProgreso.swift in Sources */,
 				88348DD626CB70DA0064CFC8 /* Constants.swift in Sources */,
 				8812C49E26ED659800672C55 /* UQTextField.swift in Sources */,
 				8887338C26F3206500EAB24D /* UserService.swift in Sources */,
-				88BC912726A698BA003CACE6 /* EvaluationController.swift in Sources */,
 				CFE4E5B226DFDBD300162BDB /* ReminderCell.swift in Sources */,
 				8887338A26F1D01500EAB24D /* User.swift in Sources */,
 				887E8AD826A6923D00D62859 /* AppDelegate.swift in Sources */,

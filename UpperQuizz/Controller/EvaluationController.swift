@@ -18,7 +18,6 @@ final class EvaluationController: UITableViewController {
         configureViewController()
         configureTableView()
         fetchEvaluations()
-        //evaluations = LocalDataManager.getData(of: [Evaluation].self, from: "evaluaciones")
     }
     
     override func viewWillAppear(_ animated: Bool) {
