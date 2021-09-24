@@ -9,15 +9,16 @@ import Foundation
 
 // MARK: - Evalucion
 struct Evaluation: Codable {
-    let examenId: Int
+    let aciertosTotales, evaluacionId, examenId, numIntento: Int
     let nombreExamen: String
+    let numPreguntasContestadas: Int
     let status: EvaluationState
-    let aciertos, numPreguntasContestadas, totalPreguntas, intentos: Int
+    let totalPreguntas: Int
 }
 
 enum EvaluationState: String, Codable {
-    case finished = "T"
-    case incomplete = "I"
-    case initial = "N"
+    case finished = "TERMINADO"
+    case incomplete = "INCONCLUSO"
+    case initial = "NUNCA"
 }
 

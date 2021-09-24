@@ -39,7 +39,7 @@ final class EvaluationCell: UITableViewCell {
     // MARK: - Helpers
     public func configure() {
         guard let viewModel = viewModel else { return }
-        evaluationTitleLabel?.text = viewModel.evaluation.nombreExamen
+        evaluationTitleLabel?.text = "\(viewModel.evaluation.nombreExamen)"
         startImageView?.isHidden = !viewModel.isInitialEvaluation
         circularProgressBarView?.isHidden = viewModel.isInitialEvaluation
         circularProgressBarView?.progressAnimation(progressPercentage: viewModel.completionPercentage)

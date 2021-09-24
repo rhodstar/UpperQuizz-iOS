@@ -18,12 +18,14 @@ final class LoginController: UIViewController {
     private weak var passwordTextField: UITextField?
     private weak var loginButton: UIButton?
     private weak var registerButtonNavigation: UIButton?
+    private var viewModel = LoginViewModel()
     weak var delegate: AuthenticationDelegate?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        configureNotificationObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,7 +37,6 @@ final class LoginController: UIViewController {
     // MARK: - Actions
     @objc func handleShowSignUp() {
         let registrationController = RegistrationController()
-        registrationController.delegate = delegate
         navigationController?.pushViewController(registrationController, animated: true)
     }
     
@@ -43,7 +44,7 @@ final class LoginController: UIViewController {
         guard let email = emailTextField?.text else { return }
         guard let password = passwordTextField?.text else { return }
         let credentials = LoginCredentials(correo: email, contrasena: password)
-        AuthenticationService.sharedInstance.logUserIn(with: credentials) { result in
+        AuthenticationService.shared.logUserIn(with: credentials) { result in
             switch result {
             case .success(let user):
                 guard let user = user else { return }
@@ -52,6 +53,16 @@ final class LoginController: UIViewController {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    @objc func textDidChange(sender: UITextField) {
+        if sender == emailTextField {
+            viewModel.email = sender.text
+        } else {
+            viewModel.password = sender.text
+        }
+        
+        self.updateForm()
     }
     
     // MARK: - Helper functions
@@ -83,7 +94,7 @@ final class LoginController: UIViewController {
         loginButton.layer.cornerRadius = 5
         loginButton.setHeight(50)
         loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        // loginButton.isEnabled = false
+        loginButton.isEnabled = false
         loginButton.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         self.loginButton = loginButton
         
@@ -110,4 +121,23 @@ final class LoginController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
     }
+    
+    func configureNotificationObservers() {
+        guard let emailTextField = emailTextField, let passwordTextField = passwordTextField else {
+            return
+        }
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
 }
+
+// MARK: - FormViewModel
+extension LoginController: FormViewModel {
+    func updateForm() {
+        guard let loginButton = loginButton else { return }
+        loginButton.backgroundColor = viewModel.buttonBackgroundColor
+        loginButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+        loginButton.isEnabled = viewModel.formIsValid
+    }
+}
+
