@@ -36,9 +36,9 @@ struct QuizzViewModel {
     
     func prevButtonBackground(index: Int) -> UIColor {
         if index == 0 {
-            return .gray
+            return Constants.culturedColor
         }
-        return Constants.primaryColor
+        return Constants.secondaryColor
     }
     
     func nextButTitle(index: Int) -> String {
@@ -60,7 +60,18 @@ struct QuizzViewModel {
             }
         }
         
-        return .gray
+        return Constants.culturedColor
+    }
+    func nextButTextColor(index: Int, answers: [Int?]?) -> UIColor {
+        guard let questions = questions else { return .white }
+        if answers?[index] != nil {
+            if index == ( questions.count - 1) {
+                return .white
+            } else {
+                return .white
+            }
+        }
         
+        return .brown
     }
 }

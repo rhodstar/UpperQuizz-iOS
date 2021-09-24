@@ -28,7 +28,7 @@ final class QuizzViewController: UIViewController {
     
     var answers: [Int?]? {
         didSet {
-            updateNextButton()
+            nextButtonColors()
         }
     }
 
@@ -60,7 +60,7 @@ final class QuizzViewController: UIViewController {
         if questionIndex < questions.count - 1 && answers?[questionIndex] != nil { // nil = NO option selected
             questionIndex += 1
             configureQuestion(index: questionIndex)
-            nextButton?.backgroundColor = .gray
+            nextButtonColors()
         } else {
             print("No se ha seleccionado, ninguna opcion")
         }
@@ -76,15 +76,15 @@ final class QuizzViewController: UIViewController {
     //MARK:- UI Helpers
     func updateNavButtons() {
         prevButton?.backgroundColor = viewModel?.prevButtonBackground(index: questionIndex)
-        
-        let title = viewModel?.nextButTitle(index: questionIndex)
-        nextButton?.setTitle(title, for: .normal)
+        nextButtonColors()
     }
     
-    func updateNextButton() {
+    func nextButtonColors() {
         let title = viewModel?.nextButTitle(index: questionIndex)
         nextButton?.setTitle(title, for: .normal)
         nextButton?.backgroundColor = viewModel?.nextButColor(index: questionIndex, answers: answers)
+        let textColor = viewModel?.nextButTextColor(index: questionIndex, answers: answers)
+        nextButton?.setTitleColor(textColor, for: .normal)
     }
     
     func configureViewController() {
@@ -164,8 +164,8 @@ extension QuizzViewController {
         
         let nextButton = UIButton()
         nextButton.setTitle("Siguiente", for: .normal)
-        nextButton.backgroundColor = Constants.primaryColor
-        nextButton.setTitleColor(.white, for: .normal)
+        nextButton.backgroundColor = Constants.culturedColor
+        nextButton.setTitleColor(.brown, for: .normal)
         nextButton.addTarget(self, action: #selector(handleNextQuestion),for: .touchUpInside)
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(nextButton)
@@ -173,8 +173,8 @@ extension QuizzViewController {
 
         let prevButton = UIButton()
         prevButton.setTitle("Anterior", for: .normal)
-        prevButton.backgroundColor = Constants.primaryColor
-        prevButton.setTitleColor(.white, for: .normal)
+        prevButton.backgroundColor = Constants.secondaryColor
+        prevButton.setTitleColor(.brown, for: .normal)
         prevButton.addTarget(self, action: #selector(handlePrevQuestion), for: .touchUpInside)
         prevButton.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(prevButton)
@@ -196,12 +196,12 @@ extension QuizzViewController {
             nextButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 10),
             nextButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5),
             nextButton.widthAnchor.constraint(equalToConstant: 150),
-            nextButton.heightAnchor.constraint(equalToConstant: 50),
+            nextButton.heightAnchor.constraint(equalToConstant: 40),
 
             prevButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 10),
             prevButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
             prevButton.widthAnchor.constraint(equalToConstant: 150),
-            prevButton.heightAnchor.constraint(equalToConstant: 50)
+            prevButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 }
