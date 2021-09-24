@@ -32,7 +32,7 @@ struct EvaluationViewModel {
     var subtitleMessage: String {
         switch evaluation.status {
         case .finished:
-            let score = Double(evaluation.aciertos * 10) / Double(evaluation.totalPreguntas)
+            let score = Double(evaluation.aciertosTotales * 10) / Double(evaluation.totalPreguntas)
             return String(format: "Calificación: %.1f de 10.0", score)
         case .incomplete:
             return "Continuar examen >"
