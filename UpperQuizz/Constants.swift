@@ -25,6 +25,7 @@ struct Constants {
     static let backupURL = "https://blog.unitips.mx"
 
     static let secondaryColor = UIColor(rgb: 0xDADDD8)
+    static let culturedColor = UIColor(rgb: 0xEEF0F2)
     
     /* NETWORK CONSTANTS */
     static let BASE_URL = "https://upper-quizz.herokuapp.com/v1"
