@@ -17,12 +17,12 @@ final class EvaluationController: UITableViewController {
         super.viewDidLoad()
         configureViewController()
         configureTableView()
-        fetchEvaluations()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
+        fetchEvaluations()
     }
     
     // MARK: - Network
@@ -77,7 +77,10 @@ extension EvaluationController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: Present questions for specific evaluation
-        print("DEBUG: Implement functionality here")
+        let vc = QuizzViewController()
+        vc.evaluation = evaluations?[indexPath.row]
+        self.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+        self.hidesBottomBarWhenPushed = false
     }
 }
