@@ -19,6 +19,11 @@ class DetailVC: UIViewController, UITableViewDelegate{
         configureLayout()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.popToRootViewController(animated: false)
+    }
+    
 // MARK: - Configure Layout
     func configureLayout(){
         let tableView = UITableView(frame: .zero, style: .grouped)
