@@ -15,3 +15,7 @@ struct  Question: Codable {
     let materiaId: Int
     let opciones: [Option]
 }
+
+struct EvaluationOption: Codable {
+    let opcionSeleccionadaId: Int
+}
