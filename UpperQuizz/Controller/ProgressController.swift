@@ -18,9 +18,13 @@ final class ProgressController: UIViewController {
 // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchProgress()
-        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchProgress()
+    }
+    
 // MARK: - Network
     func fetchProgress() {
         ProgresService.shared.getProgress { result in
