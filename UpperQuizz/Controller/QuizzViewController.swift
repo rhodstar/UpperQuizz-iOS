@@ -118,11 +118,11 @@ final class QuizzViewController: UIViewController {
         var puntajesMateria: [puntaje_materia] = []
         
         for i in 0..<subjects.count {
-            puntajesMateria.append(puntaje_materia(materia_id: i+1, nombre_materia: subjects[i], puntaje: pointsBySubject[i] ))
+            puntajesMateria.append(puntaje_materia(materiaId: i+1, nombreMateria: subjects[i], puntaje: pointsBySubject[i] ))
         }
         
         let today = "\(Date())"
-        let newExamenTerminado = examenTerminado(evaluacion_id: 1, aciertos_totales: totalPoints ?? 0, fecha_aplicacion: today, puntaje_materia: puntajesMateria)
+        let newExamenTerminado = examenTerminado(evaluacionId: 1, aciertosTotales: totalPoints ?? 0, puntajeMateria: puntajesMateria, numIntento: 1, fechaAplicacion: today)
         
         saveGrades(evaluationId: evaluation!.evaluacionId, answers: newExamenTerminado)
         
