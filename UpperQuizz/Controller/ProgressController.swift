@@ -11,12 +11,44 @@ import UIKit
 final class ProgressController: UIViewController {
     
     private weak var tableView: UITableView?
-    let progressData2 = LocalDataManager.getData(of: miProgreso.self, from: "mi_progreso")
-    let examenTermiando2 = LocalDataManager.getData(of: examenTerminado.self, from: "examen_terminado")
+    var progressData2: miProgreso?
+    
+    var examenTermiando2: examenTerminado?
+    
 // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureLayout()
+        fetchProgress()
+        
+    }
+// MARK: - Network
+    func fetchProgress() {
+        ProgresService.shared.getProgress { result in
+            switch result{
+            case .success(let progreso):
+                self.progressData2 = progreso
+                self.tableView?.reloadData()
+                print(progreso)
+                self.configureLayout()
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
+    func fetchDetail(evaluation: Int) {
+        ProgresService.shared.getDetail(evaluationId: evaluation) { result in
+            switch result{
+            case .success(let examenterminado):
+                self.examenTermiando2 = examenterminado
+                let detailVcc = DetailVC()
+                detailVcc.examenTerminado = self.examenTermiando2
+                self.present(detailVcc, animated: true)
+                print(examenterminado)
+                self.configureLayout()
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
     }
 
 // MARK: - Configure Layout
@@ -45,7 +77,7 @@ final class ProgressController: UIViewController {
 // MARK: - Extensión ProgressController
 extension ProgressController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return progressData2?.historialEvaluaciones.count ?? 1
+        return progressData2?.historial.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,9 +85,9 @@ extension ProgressController: UITableViewDataSource{
         guard let viewCell = cell as? CellView else {
             return cell
         }
-        viewCell.nameLabel.text = progressData2?.historialEvaluaciones[indexPath.row].nombreExamen
-        viewCell.descriptionLabel.text = "Calif: " + String(progressData2!.historialEvaluaciones[indexPath.row].puntajeTotal)
-        viewCell.horizontalProgressBar.progress = CGFloat(progressData2!.historialEvaluaciones[indexPath.row].puntajeTotal)/10
+        viewCell.nameLabel.text = progressData2?.historial[indexPath.row].nombreExamen
+        viewCell.descriptionLabel.text = "Aciertos: " + String(progressData2!.historial[indexPath.row].aciertosTotales)
+        viewCell.horizontalProgressBar.progress = CGFloat(progressData2!.historial[indexPath.row].aciertosTotales)/10
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -66,9 +98,9 @@ extension ProgressController: UITableViewDataSource{
 // MARK: - Extension for Delegate Table
 extension ProgressController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVcc = DetailVC()
-        detailVcc.examenTerminado = examenTermiando2
-        self.present(detailVcc, animated: true)
+        let evaluacionId = progressData2!.historial[indexPath.row].evaluacionId
+        print(evaluacionId)
+        fetchDetail(evaluation: evaluacionId)
     }
 }
 

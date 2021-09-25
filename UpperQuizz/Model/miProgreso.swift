@@ -11,10 +11,11 @@ struct miProgreso: Codable {
 //  Dato unico
     var promedioGeneral: Float
 //  Arreglo de otros datos
-    var historialEvaluaciones: [historialEvalucaciones]
+    var historial: [historialEvalucaciones]
 }
 struct historialEvalucaciones: Codable {
     var nombreExamen: String
-    var puntajeTotal: Int
-    var evaluacionID: Int
+    var aciertosTotales: Int
+    var evaluacionId: Int
+    
 }

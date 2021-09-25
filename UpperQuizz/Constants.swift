@@ -31,6 +31,7 @@ struct Constants {
     static let REGISTER_ENDPOINT = BASE_URL + "/register"
     static let LOGIN_ENDPOINT = BASE_URL + "/login"
     static let EVALUATION_ENDPOINT = BASE_URL + "/evaluacion"
+    static let PROGRESS_ENDPOINT = BASE_URL + "/historial"
     
     /* USER DEFAULTS */
     static let USER_LOGIN = "user_token"
