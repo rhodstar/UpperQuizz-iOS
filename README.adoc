@@ -1,0 +1,47 @@
+= UpperQuizz iOS App
+Creado por Rodrigo Francisco <rhodfra@gmail.com>
+Version 1.0, 25.09.2021
+// Ruta base de las imagenes
+:imagesdir: ./README.assets/ 
+// Resaltar sintaxis
+:source-highlighter: pygments
+// Iconos para entorno local
+ifndef::env-github[:icons: font]
+// Iconos para entorno github
+ifdef::env-github[]
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+
+Proyecto final para el diplomado 5G iOS
+
+[source,sh]
+Septiembre de 2021
+Autor: rhodfra@gmail.com 
+swift 5, iOS 13
+
+UpperQuizz es una aplicación que de momento solo se encuentra para la plataforma
+de iOS, para iPhones que acompaña el aprendizaje de cualquier persona que este
+enfocada en entrar en la UNAM o universidades que tenga modalidades similiares 
+de admisión a las de la UNAM.
+
+En esta app se ofrecen 3 servicios básicos:
+
+* Recordatorios de la convocatorias de las universidades más importantes del país
+* Evaluaciones con exámenes que ayudan al usuario repasar: 
+** Matemáticas
+** Español
+** Física
+** Química
+** Biología
+** Historia universal
+** Historia de México
+** Literatura
+** Geografía
+** Filosofía
+* Monitoreo constante del progreso del alumno por evaluación y por materia
+
+image::upperquizz.gif[]
