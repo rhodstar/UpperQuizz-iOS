@@ -40,6 +40,44 @@ final class QuizzViewController: UIViewController {
         loadQuestions()
     }
     
+    //MARK:- Networking
+    func loadQuestions() {
+        guard let evaluation = evaluation else { return }
+        QuizzService.sharedInstance.getEvaluation(evaluationID: evaluation.evaluacionId) { [weak self] result in
+            switch result {
+            case .success(let evaluation):
+                self?.questions = evaluation
+                //self.questions = questions
+                // Initializiting array of answers
+                // This array will help us count wrong and good answers
+                // And redraw previous answered questions.
+                self?.answers = Array(repeating: nil, count: (self?.questions!.count)!)
+                self?.viewModel = QuizzViewModel(questions: self?.questions)
+                DispatchQueue.main.async {
+                    self?.configureQuestion(index: 0)
+                }
+            case .failure(let error):
+                debugPrint(error.localizedDescription)
+            }
+        }
+    }
+    
+    func saveSelectedOption(evaluationId: Int, questionId: Int, optionId: Int) {
+        QuizzService.sharedInstance.saveSelectedOption(evaluationId: evaluationId, questionId: questionId, selectedOptionId: optionId) { message in
+            DispatchQueue.main.async {
+                print(message)
+            }
+        }
+    }
+    
+    func saveGrades(evaluationId: Int, answers: examenTerminado) {
+        QuizzService.sharedInstance.saveEvaluation(evaluationId: evaluationId, answers: answers) { message in
+            DispatchQueue.main.async {
+                print(message)
+            }
+        }
+    }
+    
     //MARK:- Helpers
     @objc func handleNextQuestion() {
         guard let questions = questions else { return }
@@ -86,9 +124,7 @@ final class QuizzViewController: UIViewController {
         let today = "\(Date())"
         let newExamenTerminado = examenTerminado(evaluacion_id: 1, aciertos_totales: totalPoints ?? 0, fecha_aplicacion: today, puntaje_materia: puntajesMateria)
         
-        QuizzService.sharedInstance.saveEvaluation(evaluationId: evaluation!.evaluacionId, answers: newExamenTerminado) { message in
-            print(message)
-        }
+        saveGrades(evaluationId: evaluation!.evaluacionId, answers: newExamenTerminado)
         
         let detailVcc = DetailVC()
         detailVcc.examenTerminado = newExamenTerminado
@@ -126,7 +162,6 @@ extension QuizzViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: OptionCell.reuseId, for: indexPath) as! OptionCell
         let option = questions?[questionIndex].opciones[indexPath.row]
         cell.option = option
-        
         cell.wasSelected = viewModel?.setWasSelectedFlag(index: questionIndex, answers: answers, optionId: option?.opcionId)
         
         return cell
@@ -141,11 +176,7 @@ extension QuizzViewController: UITableViewDelegate {
         answers?[questionIndex] = optionId
         tableView.reloadData()
         
-        QuizzService.sharedInstance.saveSelectedOption(evaluationId: evaluation!.evaluacionId, questionId: questionId!, selectedOptionId: optionId!) { message in
-                DispatchQueue.main.async {
-                    print(message)
-                }
-        }
+        saveSelectedOption(evaluationId: evaluation!.evaluacionId, questionId: questionId!, optionId: optionId!)
     }
 }
 
@@ -223,43 +254,17 @@ extension QuizzViewController {
             optionsTableView.topAnchor.constraint(equalTo: questionTextLabel.bottomAnchor, constant: 15),
             optionsTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
             optionsTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
-            optionsTableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -100),
+            optionsTableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -70),
             
             nextButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 10),
             nextButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5),
             nextButton.widthAnchor.constraint(equalToConstant: 150),
-            nextButton.heightAnchor.constraint(equalToConstant: 40),
+            nextButton.heightAnchor.constraint(equalToConstant: 50),
 
             prevButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 10),
             prevButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
             prevButton.widthAnchor.constraint(equalToConstant: 150),
-            prevButton.heightAnchor.constraint(equalToConstant: 40)
+            prevButton.heightAnchor.constraint(equalToConstant: 50)
         ])
-    }
-}
-
-// MARK:- Temporal extension for fake Data
-extension QuizzViewController {
-    func loadQuestions() {
-        guard let evaluation = evaluation else { return }
-        print("evaluationID: \(evaluation.evaluacionId)")
-        QuizzService.sharedInstance.getEvaluation(evaluationID: evaluation.evaluacionId) { [weak self] result in
-            switch result {
-            case .success(let evaluation):
-                self?.questions = evaluation
-                //self.questions = questions
-                // Initializiting array of answers
-                // This array will help us count wrong and good answers
-                // And redraw previous answered questions.
-                self?.answers = Array(repeating: nil, count: (self?.questions!.count)!)
-                self?.viewModel = QuizzViewModel(questions: self?.questions)
-                DispatchQueue.main.async {
-                    self?.configureQuestion(index: 0)
-                }
-            case .failure(let error):
-                debugPrint(error.localizedDescription)
-            }
-        }
-
     }
 }
