@@ -10,6 +10,7 @@ struct examenTerminado: Codable {
     var aciertosTotales: Int
     var puntajeMateria: [puntaje_materia]
     var numIntento: Int
+    var fechaAplicacion: String?
 }
 
 struct puntaje_materia: Codable {
