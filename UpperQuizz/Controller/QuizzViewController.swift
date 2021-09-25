@@ -38,18 +38,9 @@ final class QuizzViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         loadQuestions()
-        viewModel = QuizzViewModel(questions: self.questions)
     }
     
     //MARK:- Helpers
-    func configureQuestion(index: Int) {
-        let currentQuestion = questions?[index]
-        self.title = "Pregunta \(index + 1)"
-        subjectLabel?.text = currentQuestion?.materia
-        questionTextLabel?.text = currentQuestion?.textoPregunta
-        optionsTableView?.reloadData()
-    }
-    
     @objc func handleNextQuestion() {
         guard let questions = questions else { return }
         if questionIndex < questions.count - 1 {
@@ -71,17 +62,25 @@ final class QuizzViewController: UIViewController {
         }
     }
     
+    func configureQuestion(index: Int) {
+        let currentQuestion = questions?[index]
+        self.title = "Pregunta \(index + 1)"
+        subjectLabel?.text = currentQuestion?.materia
+        questionTextLabel?.text = currentQuestion?.textoPregunta
+        optionsTableView?.reloadData()
+    }
+    
     func presentGrades() {
         viewModel?.gradeExam(answers: answers)
         let totalPoints = viewModel?.totalPoints
-        let pointsBySubject = viewModel?.pointsBySubject
+        let pointsBySubject = (viewModel?.pointsBySubject)!
         
-        let subjects = [ "Matemáticas", "Español", "Física", "Química", "Biología", "Historia Universal", "Historia de México", "Literatura", "Geografía", "Filosofía"]
+        let subjects = Constants.subjects
         
         var puntajesMateria: [puntaje_materia] = []
         
-        for i in 0...(subjects.count+1) {
-            puntajesMateria.append(puntaje_materia(materia_id: i+1, nombre_materia: subjects[i], puntaje: pointsBySubject?[0] ?? 0))
+        for i in 0..<subjects.count {
+            puntajesMateria.append(puntaje_materia(materia_id: i+1, nombre_materia: subjects[i], puntaje: pointsBySubject[i] ))
         }
         
         let today = "\(Date())"
@@ -169,6 +168,7 @@ extension QuizzViewController {
         let questionTextLabel = UILabel()
         questionTextLabel.text = "..."
         questionTextLabel.numberOfLines = 0
+        questionTextLabel.lineBreakMode = .byWordWrapping
         questionTextLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(questionTextLabel)
         self.questionTextLabel = questionTextLabel
@@ -208,7 +208,7 @@ extension QuizzViewController {
             questionTextLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
             questionTextLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
             
-            optionsTableView.topAnchor.constraint(equalTo: questionTextLabel.topAnchor, constant: 40),
+            optionsTableView.topAnchor.constraint(equalTo: questionTextLabel.bottomAnchor, constant: 15),
             optionsTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
             optionsTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
             optionsTableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -100),
@@ -230,6 +230,7 @@ extension QuizzViewController {
 extension QuizzViewController {
     func loadQuestions() {
         guard let evaluation = evaluation else { return }
+        print("evaluationID: \(evaluation.evaluacionId)")
         QuizzService.sharedInstance.getEvaluation(evaluationID: evaluation.evaluacionId) { [weak self] result in
             switch result {
             case .success(let evaluation):
@@ -239,7 +240,7 @@ extension QuizzViewController {
                 // This array will help us count wrong and good answers
                 // And redraw previous answered questions.
                 self?.answers = Array(repeating: nil, count: (self?.questions!.count)!)
-                
+                self?.viewModel = QuizzViewModel(questions: self?.questions)
                 DispatchQueue.main.async {
                     self?.configureQuestion(index: 0)
                 }
