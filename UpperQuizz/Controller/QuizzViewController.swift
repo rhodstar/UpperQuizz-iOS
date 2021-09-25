@@ -86,6 +86,10 @@ final class QuizzViewController: UIViewController {
         let today = "\(Date())"
         let newExamenTerminado = examenTerminado(evaluacion_id: 1, aciertos_totales: totalPoints ?? 0, fecha_aplicacion: today, puntaje_materia: puntajesMateria)
         
+        QuizzService.sharedInstance.saveEvaluation(evaluationId: evaluation!.evaluacionId, answers: newExamenTerminado) { message in
+            print(message)
+        }
+        
         let detailVcc = DetailVC()
         detailVcc.examenTerminado = newExamenTerminado
         self.hidesBottomBarWhenPushed = true
@@ -132,8 +136,16 @@ extension QuizzViewController: UITableViewDataSource {
 // MARK:- TableView Data source
 extension QuizzViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        answers?[questionIndex] = questions?[questionIndex].opciones[indexPath.row].opcionId
+        let optionId = questions?[questionIndex].opciones[indexPath.row].opcionId
+        let questionId = questions?[questionIndex].preguntaId
+        answers?[questionIndex] = optionId
         tableView.reloadData()
+        
+        QuizzService.sharedInstance.saveSelectedOption(evaluationId: evaluation!.evaluacionId, questionId: questionId!, selectedOptionId: optionId!) { message in
+                DispatchQueue.main.async {
+                    print(message)
+                }
+        }
     }
 }
 
