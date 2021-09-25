@@ -35,4 +35,7 @@ struct Constants {
     
     /* USER DEFAULTS */
     static let USER_LOGIN = "user_token"
+    
+    // Questions subjects
+    static let subjects = [ "Matemáticas", "Español", "Física", "Química", "Biología", "Historia Universal", "Historia de México", "Literatura", "Geografía", "Filosofía"]
 }
