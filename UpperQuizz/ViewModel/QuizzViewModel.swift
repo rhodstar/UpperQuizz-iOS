@@ -13,16 +13,11 @@ struct QuizzViewModel {
     public var pointsBySubject: [Int] = Array(repeating: 0, count: Constants.subjects.count)
     
     mutating func gradeExam(answers: [Int?]?) {
-        print("Before questions")
         guard let questions = questions else { return }
-        print("After questions")
         guard let answers = answers else { return }
-        print("After answers")
         var index = 0
         for answer in answers {
-            print("Comparing \(answer!) == \(questions[index].opcionCorrectaId)")
             if (answer!)  == questions[index].opcionCorrectaId {
-                print("Entering good one")
                 totalPoints += 1
                 let materia_id = questions[index].materiaId
                 //TODO:- Maybe consider changing materia_id as the index
