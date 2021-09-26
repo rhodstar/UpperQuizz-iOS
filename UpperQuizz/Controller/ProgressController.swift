@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 // MARK: - MainTabController Class
 final class ProgressController: UIViewController {
@@ -112,7 +113,8 @@ extension ProgressController{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 150))
         let label = LabelTittle()
-        label.text = "Mi Promedio: " + String(self.progressData2!.promedioGeneral)
+        let roundedVar = round(self.progressData2!.promedioGeneral*100)/100.0
+        label.text = "Mi Promedio: " + String(roundedVar)
         header.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
 
