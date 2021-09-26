@@ -79,12 +79,10 @@ final class LoginController: UIViewController {
         let emailTextField = UQTextField(placeholder: "Email")
         emailTextField.autocapitalizationType = .none
         emailTextField.keyboardType = .emailAddress
-        emailTextField.text = "rodrigo@gmail.com"
         self.emailTextField = emailTextField
         
         let passwordTextField = UQTextField(placeholder: "Password")
         passwordTextField.isSecureTextEntry = true
-        passwordTextField.text = "diplomado123"
         self.passwordTextField = passwordTextField
         
         let loginButton = UIButton(type: .system)
