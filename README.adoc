@@ -45,3 +45,32 @@ En esta app se ofrecen 3 servicios básicos:
 * Monitoreo constante del progreso del alumno por evaluación y por materia
 
 image::upperquizz.gif[]
+
+== Ejecución de la app
+
+.Requisitos
+*  Carthage
+* Xcode en su versión más reciente
+
+El primer paso es descargar el repositorio, utilizando la opción de *zip*
+o vía *git*
+
+[source,sh]
+----
+git clone https://github.com/e-muf/UpperQuizz-iOS
+----
+
+
+En caso de no tener Carthage, se debe instalar con =brew=
+
+[source,sh]
+----
+brew install carthage
+----
+
+Dentro del directorio del repositorio ejecutamos los siguiente
+
+[source,sh]
+----
+carthage bootstrap --platform iOS --use-xcframworks --no-use-binaries
+----
